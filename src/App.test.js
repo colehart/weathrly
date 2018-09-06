@@ -21,6 +21,8 @@ describe('App', () => {
   });
 
   it('should import mock data', () => {
+    const city = App.state.current_observation.display_location.city;
 
+    expect(city).toEqual('Louisville');
   })
 });

@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import { data } from './mock-data.js';
+import data from './mock-data.js';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = { data };
+  }
+
   render() {
     return (
       <div className="App">
