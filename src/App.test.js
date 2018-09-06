@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
 import App from './App';
 
-
 describe('App', () => {
   let wrapper;
 
@@ -20,4 +19,8 @@ describe('App', () => {
     ReactDOM.render(<App />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
+
+  it('should import mock data', () => {
+
+  })
 });
