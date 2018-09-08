@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 export default class CurrWeather extends Component {
   constructor(props) {
-    super();
-    console.log(props);
+    super(props)
 
     this.state = {
-      currentLocation: this.setCurrLocation(this.props.data)
+      currentLocation: this.setCurrLocation(props.data),
+
     }
   }
 
@@ -60,13 +60,14 @@ export default class CurrWeather extends Component {
 
 
   render() {
-    // return (
-  //     name of current city
-  //     current condition
-  //     current day
-  //     current temp
-  //     expected high and low
-  //     weather summary
-    // )
+    return (
+      <h1>{this.state.currentLocation}</h1>
+      // name of current city
+      // current condition
+      // current day
+      // current temp
+      // expected high and low
+      // weather summary
+    )
   }
 }

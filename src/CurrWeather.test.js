@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import CurrWeather from './CurrWeather';
-
+import data from './MockData';
 
 describe('CurrWeather', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<CurrWeather />);
+    wrapper = shallow(<CurrWeather data={data}/>);
   });
 
   it('should exist', () => {
@@ -15,7 +15,7 @@ describe('CurrWeather', () => {
   });
 
   it('should store current location', () => {
-    const currLocation = wrapper.state().currentLocation
+    const currLocation = wrapper.currentLocation
 
     expect(currLocation).toEqual('Louisville, KY');
   })
