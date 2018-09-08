@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class CurrWeather extends Component {
   constructor(props) {
     super(props);
-    
+
     const observationInfo = data.current_observation;
     const locationInfo = observationInfo.display_location;
 
