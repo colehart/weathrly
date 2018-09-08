@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import data from './Mock-data';
+import data from './MockData';
 import CurrWeather from './CurrWeather';
 
 class App extends Component {
   constructor() {
     super();
-
+    console.log(data);
     this.state = {
       data: data || {}
     }
@@ -15,8 +15,6 @@ class App extends Component {
 
 
   render() {
-
-
     return (
       <div className="App">
       {/* Add Header Component */}
