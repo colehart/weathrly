@@ -11,7 +11,12 @@ export default class CurrWeather extends Component {
       icon: this.setIcon(props.data),
       currentTempF: this.setTemps(props.data, 'temp_f'),
       currentTempC: this.setTemps(props.data, 'temp_c'),
-      feelsLike: this.setFeelsLike(props.data)
+      feelsLike: this.setFeelsLike(props.data),
+      todayHighF: this.setExtremeTemps(props.data, 'fahrenheit', 'high'),
+      todayHighC: this.setExtremeTemps(props.data, 'celsius', 'high'),
+      todayLowF: this.setExtremeTemps(props.data, 'fahrenheit', 'low'),
+      todayLowC: this.setExtremeTemps(props.data, 'celsius', 'low'),
+      todaySummary: this.setWeatherSummary(props.data)
     }
   }
 
@@ -53,7 +58,7 @@ export default class CurrWeather extends Component {
   }
 
   setTemps(data, degreeType) {
-    const temp = this.getObservationInfo(data).degreeType;
+    const temp = this.getObservationInfo(data)[degreeType];
 
     return temp;
   }
@@ -61,11 +66,11 @@ export default class CurrWeather extends Component {
   setExtremeTemps(data, degreeType, hiLow) {
     const simpleForecast = this.getSimpleForecast(data);
     const forecastTemps = simpleForecast.map(forecastDay => {
-        let temp = forecastDay.hiLow;
+        let temp = forecastDay[hiLow];
         return temp;
       })
 
-    return forecastTemps[0];
+    return forecastTemps[0][degreeType];
   }
 
   setFeelsLike(data) {
@@ -74,43 +79,28 @@ export default class CurrWeather extends Component {
     return feelsLike;
   }
 
-    // // drilling down for highs and lows
-    // const forecastHighs = simpleForecast.map((date) => {
-    //   let highTemp = date.high;
-    //   return highTemp;
-    // }, '')
-    // const forecastLows = simpleForecast.map((date) => {
-    //   let lowTemp = date.low;
-    //   return lowTemp;
-    // })
-    // const todayHigh = forecastHighs[0];
-    // const todayLow = forecastLows[0];
+  setWeatherSummary(data) {
+    const forecastInfo = this.getForecastInfo(data);
+    const summaries = forecastInfo.map((forecastDay) => {
+      let summary = forecastDay.fcttext;
+      return summary;
+    })
 
-
-    // const forecastInfo = this.getForecastInfo(data);
-    // const forecastSummaries = forecastInfo.map((forecastDay) => {
-    //   let summary = forecastDay.fcttext;
-    //   return summary
-    // })
-    // const todaySummary = forecastSummaries[0];
-
-
+    return summaries[0];
+  }
 
   render() {
     return (
       <div>
-        <h1>{this.state.currentLocation}</h1>
-        <p>{this.state.currentCondition}</p>
+        <h1>Current Location: {this.state.currentLocation}</h1>
+        <p>Current condition: {this.state.currentCondition}</p>
         <p>{this.state.today}</p>
-        <p>{this.state.icon}</p>
-        <p>{this.state.currentTempF}</p>
-        <p>{this.state.currentTempC}</p>
-        <p>{this.state.feelsLike}</p>
-      // current condition
-      // current day
-      // current temp
-      // expected high and low
-      // weather summary
+        <p>icon: {this.state.icon}</p>
+        <p>{this.state.currentTempF}&deg; F /<span> {this.state.currentTempC}&deg; C</span></p>
+        <p>Feels Like: {this.state.feelsLike}</p>
+        <p>Todays High: {this.state.todayHighF}&deg; F /<span> {this.state.todayHighC}&deg; C</span></p>
+        <p>Todays Low: {this.state.todayLowF}&deg; F /<span> {this.state.todayLowC}&deg; C</span></p>
+        <p>Weather Summary: {this.state.todaySummary}</p>
       </div>
     )
   }
