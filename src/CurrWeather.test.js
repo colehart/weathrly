@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import CurrWeather from './CurrWeather';
-import data from './MockData';
+import data from './mockData';
 
 describe('CurrWeather', () => {
   let wrapper;
@@ -15,7 +15,7 @@ describe('CurrWeather', () => {
   });
 
   it('should store current location', () => {
-    const currLocation = wrapper.currentLocation
+    const currLocation = wrapper.state().currentLocation
 
     expect(currLocation).toEqual('Louisville, KY');
   })

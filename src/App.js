@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import data from './MockData';
+import data from './mockData';
 import CurrWeather from './CurrWeather';
 
 class App extends Component {
