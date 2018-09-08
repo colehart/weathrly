@@ -7,7 +7,11 @@ export default class CurrWeather extends Component {
     this.state = {
       currentLocation: this.setCurrLocation(props.data),
       currentCondition: this.setCurrCondition(props.data),
-      today: this.setToday(props.data)
+      today: this.setToday(props.data),
+      icon: this.setIcon(props.data),
+      currentTempF: this.setTemps(props.data, 'temp_f'),
+      currentTempC: this.setTemps(props.data, 'temp_c'),
+      feelsLike: this.setFeelsLike(props.data)
     }
   }
 
@@ -17,6 +21,10 @@ export default class CurrWeather extends Component {
 
   getForecastInfo(data) {
     return data.forecast.txt_forecast.forecastday
+  }
+
+  getSimpleForecast(data) {
+    return data.forecast.simpleforecast.forecastday;
   }
 
   setCurrLocation(data) {
@@ -38,17 +46,35 @@ export default class CurrWeather extends Component {
     return today;
   }
 
+  setIcon(data) {
+    const weatherIcon = this.getObservationInfo(data).icon
 
+    return weatherIcon;
+  }
 
+  setTemps(data, degreeType) {
+    const temp = this.getObservationInfo(data).degreeType;
 
-    // const weatherIcon = observationInfo.icon
-    // const tempF = observationInfo.temp_f;
-    // const tempC = observationInfo.temp_c;
-    // const feelsLike = observationInfo.feelslike_string;
-    // const today = data.forecast.txt_forecast.forecastday[0].title
+    return temp;
+  }
+
+  setExtremeTemps(data, degreeType, hiLow) {
+    const simpleForecast = this.getSimpleForecast(data);
+    const forecastTemps = simpleForecast.map(forecastDay => {
+        let temp = forecastDay.hiLow;
+        return temp;
+      })
+
+    return forecastTemps[0];
+  }
+
+  setFeelsLike(data) {
+    const feelsLike = this.getObservationInfo(data).feelslike_string;
+
+    return feelsLike;
+  }
 
     // // drilling down for highs and lows
-    // const simpleForecast = data.forecast.simpleforecast.forecastday
     // const forecastHighs = simpleForecast.map((date) => {
     //   let highTemp = date.high;
     //   return highTemp;
@@ -61,7 +87,7 @@ export default class CurrWeather extends Component {
     // const todayLow = forecastLows[0];
 
 
-    // const forecastInfo = data.forecast.txt_forecast.forecastday
+    // const forecastInfo = this.getForecastInfo(data);
     // const forecastSummaries = forecastInfo.map((forecastDay) => {
     //   let summary = forecastDay.fcttext;
     //   return summary
@@ -76,6 +102,10 @@ export default class CurrWeather extends Component {
         <h1>{this.state.currentLocation}</h1>
         <p>{this.state.currentCondition}</p>
         <p>{this.state.today}</p>
+        <p>{this.state.icon}</p>
+        <p>{this.state.currentTempF}</p>
+        <p>{this.state.currentTempC}</p>
+        <p>{this.state.feelsLike}</p>
       // current condition
       // current day
       // current temp
