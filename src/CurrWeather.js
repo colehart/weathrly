@@ -6,12 +6,17 @@ export default class CurrWeather extends Component {
 
     this.state = {
       currentLocation: this.setCurrLocation(props.data),
-
+      currentCondition: this.setCurrCondition(props.data),
+      today: this.setToday(props.data)
     }
   }
 
   getObservationInfo(data) {
     return data.current_observation;
+  }
+
+  getForecastInfo(data) {
+    return data.forecast.txt_forecast.forecastday
   }
 
   setCurrLocation(data) {
@@ -21,15 +26,21 @@ export default class CurrWeather extends Component {
     return locationFull;
   }
 
+  setCurrCondition(data) {
+    const currCondition = this.getObservationInfo(data).weather;
 
-    // const observationInfo = data.current_observation;
-    // const locationInfo = observationInfo.display_location;
+    return currCondition;
+  }
 
-    // const locationFull = locationInfo.full;
-    // const locationZip = locationInfo.zip;
-    // const locationLat = locationInfo.latitude;
-    // const locationLong = locationInfo.longitude;
-    // const currCondition = observationInfo.weather;
+  setToday(data) {
+    const today = this.getForecastInfo(data)[0].title;
+
+    return today;
+  }
+
+
+
+
     // const weatherIcon = observationInfo.icon
     // const tempF = observationInfo.temp_f;
     // const tempC = observationInfo.temp_c;
@@ -61,13 +72,16 @@ export default class CurrWeather extends Component {
 
   render() {
     return (
-      <h1>{this.state.currentLocation}</h1>
-      // name of current city
+      <div>
+        <h1>{this.state.currentLocation}</h1>
+        <p>{this.state.currentCondition}</p>
+        <p>{this.state.today}</p>
       // current condition
       // current day
       // current temp
       // expected high and low
       // weather summary
+      </div>
     )
   }
 }
