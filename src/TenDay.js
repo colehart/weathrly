@@ -7,11 +7,7 @@ export default class TenDay extends Component {
     super(props);
 
     this.state = {
-      weekday: this.setWeekday(props.data),
-      weeknight: this.setWeeknight(props.data),
-      weatherIcon: this.setWeatherIcon(props.data),
-      projectedHigh: this.setProjectedHigh(props.data),
-      projectedLow: this.setProjectedLow(props.data)
+      data: props.data || {}
     }
   }
 
@@ -20,21 +16,16 @@ export default class TenDay extends Component {
     //returns an array
   }
 
-  getWeatherString(data) {
-    return 
-  }
-
-  setWeatherIcon(data) {
-    const weatherString = this.getWeatherString(data)  
-  }
-
-
   setWeekday(data) {
 
   }
 
   setWeeknight(data) {
 
+  }
+
+  setWeatherIcon(data) {
+    // const weatherString = this.getWeatherString(data)
   }
 
   setProjectedHigh(data) {
@@ -47,68 +38,21 @@ export default class TenDay extends Component {
 
   render() {
     return (
-      <section className="ten-day-container">
+      <section className="ten-day">
         <h1>Ten Day Forecast</h1>
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
+        <dive className="ten-day-container">
+        {
+          this.state.data.map((day, index) => {
+            return <WeatherCard
+                weekday={this.setWeekday(day)}
+                weeknight={this.setWeeknight(day)}
+                icon={this.setWeatherIcon(day)}
+                projectedHigh={this.setProjectedHigh(day)}
+                projectedLow={this.setProjectedLow(day)}
+                key={index}
+        }
         />
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
-        />
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
-        />
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
-        />
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
-        />
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
-        />
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
-        />
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
-        />
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
-        />
-        <WeatherCard 
-          weekday={this.state.weekday}
-          weeknight={this.state.weeknight}
-          projectedHigh={this.state.projectedHigh}
-          projectedLow={this.state.projectedLow}
-        />
+        </div>
       </section>
     )
   }
