@@ -26,6 +26,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Weathrly</h1>
         </header>
         <CurrWeather data={this.state.data} />
+        <TenHr />
       </div>
     );
   }
