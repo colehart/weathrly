@@ -5,10 +5,12 @@ export default class WeatherCard extends Component {
     super(props);
 
     this.state = {
+      hour: this.setHour(props.data),
       weekday: this.setWeekday(props.data),
       weeknight: this.setWeeknight(props.data),
-      weatherIcon: this.setWeatherIcon(props.data, weatherString) ,
-      projectedHigh: this.setProjectedHigh(props.data) ,
+      weatherIcon: this.setWeatherIcon(props.data),
+      projectedHrTemp: this.setProjectedHrTemp(props.data),
+      projectedHigh: this.setProjectedHigh(props.data),
       projectedLow: this.setProjectedLow(props.data)
     }
   }
@@ -18,8 +20,12 @@ export default class WeatherCard extends Component {
     //returns an array
   }
 
-  getWeatherString() {
+  getWeatherString(data) {
     return 
+  }
+
+  setHour(data) {
+
   }
 
   setWeekday(data) {
@@ -30,7 +36,11 @@ export default class WeatherCard extends Component {
 
   }
 
-  setWeatherIcon(data, weatherString) {
+  setWeatherIcon(data) {
+    const weatherString = this.getWeatherString(data)  
+  }
+
+  setProjectedHrTemp(data) {
 
   }
 

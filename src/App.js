@@ -15,9 +15,13 @@ class App extends Component {
     }
   }
 
-  getWeather = () => {
-    this.setState({});
-  };
+  // getWeather = () => {
+  //   this.setState({});
+  // };
+
+  setHourlyData() {
+    return this.state.data.hourly_forecast.slice(0, 7);
+  }
 
 
   render() {
@@ -28,7 +32,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Weathrly</h1>
         </header>
         <CurrentWeather data={this.state.data} />
-        <SevenHour data={this.state.data} />
+        <SevenHour data={this.setHourlyData()} />
         <TenDay data={this.state.data} />
       </div>
     );
