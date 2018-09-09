@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class CurrWeather extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       currentLocation: this.setCurrLocation(props.data),
@@ -25,7 +25,7 @@ export default class CurrWeather extends Component {
   }
 
   getForecastInfo(data) {
-    return data.forecast.txt_forecast.forecastday
+    return data.forecast.txt_forecast.forecastday;
   }
 
   getSimpleForecast(data) {
@@ -91,7 +91,7 @@ export default class CurrWeather extends Component {
 
   render() {
     return (
-      <div>
+      <section className="CurrWeather">
         <h1>Current Location: {this.state.currentLocation}</h1>
         <p>Current condition: {this.state.currentCondition}</p>
         <p>{this.state.today}</p>
@@ -101,7 +101,7 @@ export default class CurrWeather extends Component {
         <p>Todays High: {this.state.todayHighF}&deg; F /<span> {this.state.todayHighC}&deg; C</span></p>
         <p>Todays Low: {this.state.todayLowF}&deg; F /<span> {this.state.todayLowC}&deg; C</span></p>
         <p>Weather Summary: {this.state.todaySummary}</p>
-      </div>
+      </section>
     )
   }
 }
