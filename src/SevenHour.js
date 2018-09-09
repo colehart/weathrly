@@ -9,21 +9,67 @@ export default class SevenHour extends Component {
     console.log(props)
 
     this.state = {
-      data: props.data || {}
+      hour: this.setHour(props.data),
+      weatherIcon: this.setWeatherIcon(props.data),
+      projectedHrTemp: this.setProjectedHrTemp(props.data),
     }
+  }
+
+  getWeatherString(data) {
+    return 
+  }
+
+  setWeatherIcon(data) {
+    const weatherString = this.getWeatherString(data)  
+  }
+
+  setHour(data) {
+
+  }
+
+  setProjectedHrTemp(data) {
+
   }
 
   render() {
     return (
       <section className="seven-hour-container">
         <h1>Seven Hour Forecast</h1>
-        <WeatherCard data={this.state.data}/>
-        <WeatherCard data={this.state.data}/>
-        <WeatherCard data={this.state.data}/>
-        <WeatherCard data={this.state.data}/>
-        <WeatherCard data={this.state.data}/>
-        <WeatherCard data={this.state.data}/>
-        <WeatherCard data={this.state.data}/>
+        <WeatherCard 
+          hour={this.state.hour} 
+          weatherIcon={this.state.weatherIcon}
+          projectedHrTemp={this.state.projectedHrTemp}
+        />
+        <WeatherCard 
+          hour={this.state.hour} 
+          weatherIcon={this.state.weatherIcon}
+          projectedHrTemp={this.state.projectedHrTemp}
+        />
+        <WeatherCard 
+          hour={this.state.hour} 
+          weatherIcon={this.state.weatherIcon}
+          projectedHrTemp={this.state.projectedHrTemp}
+        />
+        <WeatherCard 
+          hour={this.state.hour} 
+          weatherIcon={this.state.weatherIcon}
+          projectedHrTemp={this.state.projectedHrTemp}
+        />
+        <WeatherCard 
+          hour={this.state.hour} 
+          weatherIcon={this.state.weatherIcon}
+          projectedHrTemp={this.state.projectedHrTemp}
+        />
+        <WeatherCard 
+          hour={this.state.hour} 
+          weatherIcon={this.state.weatherIcon}
+          projectedHrTemp={this.state.projectedHrTemp}
+        />
+        <WeatherCard 
+          hour={this.state.hour} 
+          weatherIcon={this.state.weatherIcon}
+          projectedHrTemp={this.state.projectedHrTemp}
+        />
       </section>
     )
   }
