@@ -5,65 +5,35 @@ export default class WeatherCard extends Component {
     super(props);
 
     this.state = {
-      hour: this.setHour(props.data),
-      weekday: this.setWeekday(props.data),
-      weeknight: this.setWeeknight(props.data),
-      weatherIcon: this.setWeatherIcon(props.data),
-      projectedHrTemp: this.setProjectedHrTemp(props.data),
-      projectedHigh: this.setProjectedHigh(props.data),
-      projectedLow: this.setProjectedLow(props.data)
+      hour: props.data.hour || '',
+      weekday: props.data.weekday || '',
+      weeknight: props.data.weeknight || '',
+      weatherIcon: props.data.weatherIcon || '',
+      projectedHrTemp: props.data.projectHrTemp || '',
+      projectedHigh: props.data.projectedHigh || '',
+      projectedLow: props.data.projectedLow || ''
     }
   }
 
-  getForecastInfo(data) {
-    return data.forecast.txt_forecast.forecastday;
-    //returns an array
-  }
-
-  getWeatherString(data) {
-    return 
-  }
-
-  setHour(data) {
-
-  }
-
-  setWeekday(data) {
-
-  }
-
-  setWeeknight(data) {
-
-  }
-
-  setWeatherIcon(data) {
-    const weatherString = this.getWeatherString(data)  
-  }
-
-  setProjectedHrTemp(data) {
-
-  }
-
-  setProjectedHigh(data) {
-
-  }
-
-  setProjectedLow(data) {
-
-  }
-
   render() {
-    return (
-      <section className="WeatherCard">
-        <h2>{this.state.weekday}</h2>
-        <img href="{this.state.weatherIcon}"/>
-        <p>hi</p>
-        <h1>{this.state.projectedHigh}</h1>
-        <h2>{this.state.weeknight}</h2>
-        <img href="{this.state.weatherIcon}"/>
-        <p>lo</p>
-        <h1>{this.state.projectedLow}</h1>
-      </section>
-    )
+    if (this.state.hour) {
+      return (
+        <section className="WeatherCard">
+          <h2>{this.state.hour}</h2>
+          <img href="{this.state.weatherIcon}.svg"/>
+          <h2>{this.state.projectedHrTemp}</h2>
+        </section>
+      )
+    } else {
+      return (
+        <section className="WeatherCard">
+          <h2>{this.state.weekday}</h2>
+          <img href="{this.state.weatherIcon}.svg"/>
+          <h1>High: {this.state.projectedHigh}</h1>
+          <h2>{this.state.weeknight}</h2>
+          <img href="{this.state.weatherIcon}.svg"/>
+          <h1>Low: {this.state.projectedLow}</h1>
+        </section>
+      )
   }
 }

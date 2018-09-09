@@ -25,7 +25,7 @@ export default class TenDay extends Component {
   }
 
   setWeatherIcon(data) {
-    // const weatherString = this.getWeatherString(data)
+
   }
 
   setProjectedHigh(data) {
@@ -40,18 +40,19 @@ export default class TenDay extends Component {
     return (
       <section className="ten-day">
         <h1>Ten Day Forecast</h1>
-        <dive className="ten-day-container">
+        <div className="ten-day-container">
         {
           this.state.data.map((day, index) => {
             return <WeatherCard
                 weekday={this.setWeekday(day)}
                 weeknight={this.setWeeknight(day)}
-                icon={this.setWeatherIcon(day)}
+                weatherIcon={this.setWeatherIcon(day)}
                 projectedHigh={this.setProjectedHigh(day)}
                 projectedLow={this.setProjectedLow(day)}
                 key={index}
+              />
+          }
         }
-        />
         </div>
       </section>
     )

@@ -12,20 +12,16 @@ export default class SevenHour extends Component {
     }
   }
 
-  getWeatherString(data) {
-    return
-  }
-
   setWeatherIcon(data) {
-    const weatherString = this.getWeatherString(data)
+    return data.icon;
   }
 
   setHour(data) {
-
+    return data.FCTTIME.civil;
   }
 
   setProjectedHrTemp(data) {
-
+    return data.temp;
   }
 
   render() {
