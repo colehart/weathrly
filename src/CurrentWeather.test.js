@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import CurrWeather from './CurrWeather';
+import CurrentWeather from './CurrentWeather';
 import data from './mockData';
 
-describe('CurrWeather', () => {
+describe('CurrentWeather', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<CurrWeather data={data}/>);
+    wrapper = shallow(<CurrentWeather data={data}/>);
   });
 
   it('should exist', () => {

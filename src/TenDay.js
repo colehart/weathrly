@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import WeatherCard from './DCWeatherCard';
+import WeatherCard from './WeatherCard';
 
 export default class TenDay extends Component {
   constructor(props) {

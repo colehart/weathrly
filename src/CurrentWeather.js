@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class CurrWeather extends Component {
+export default class CurrentWeather extends Component {
   constructor(props) {
     super(props);
 
