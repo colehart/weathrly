@@ -6,7 +6,6 @@ import WeatherCard from './WeatherCard';
 export default class SevenHour extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
 
     this.state = {
       hour: this.setHour(props.data),
@@ -16,11 +15,11 @@ export default class SevenHour extends Component {
   }
 
   getWeatherString(data) {
-    return 
+    return
   }
 
   setWeatherIcon(data) {
-    const weatherString = this.getWeatherString(data)  
+    const weatherString = this.getWeatherString(data)
   }
 
   setHour(data) {
@@ -35,38 +34,38 @@ export default class SevenHour extends Component {
     return (
       <section className="seven-hour-container">
         <h1>Seven Hour Forecast</h1>
-        <WeatherCard 
-          hour={this.state.hour} 
+        <WeatherCard
+          hour={this.state.hour}
           weatherIcon={this.state.weatherIcon}
           projectedHrTemp={this.state.projectedHrTemp}
         />
-        <WeatherCard 
-          hour={this.state.hour} 
+        <WeatherCard
+          hour={this.state.hour}
           weatherIcon={this.state.weatherIcon}
           projectedHrTemp={this.state.projectedHrTemp}
         />
-        <WeatherCard 
-          hour={this.state.hour} 
+        <WeatherCard
+          hour={this.state.hour}
           weatherIcon={this.state.weatherIcon}
           projectedHrTemp={this.state.projectedHrTemp}
         />
-        <WeatherCard 
-          hour={this.state.hour} 
+        <WeatherCard
+          hour={this.state.hour}
           weatherIcon={this.state.weatherIcon}
           projectedHrTemp={this.state.projectedHrTemp}
         />
-        <WeatherCard 
-          hour={this.state.hour} 
+        <WeatherCard
+          hour={this.state.hour}
           weatherIcon={this.state.weatherIcon}
           projectedHrTemp={this.state.projectedHrTemp}
         />
-        <WeatherCard 
-          hour={this.state.hour} 
+        <WeatherCard
+          hour={this.state.hour}
           weatherIcon={this.state.weatherIcon}
           projectedHrTemp={this.state.projectedHrTemp}
         />
-        <WeatherCard 
-          hour={this.state.hour} 
+        <WeatherCard
+          hour={this.state.hour}
           weatherIcon={this.state.weatherIcon}
           projectedHrTemp={this.state.projectedHrTemp}
         />

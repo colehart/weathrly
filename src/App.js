@@ -19,8 +19,18 @@ class App extends Component {
   //   this.setState({});
   // };
 
+  setCurrentWeatherData() {
+    const currWeather = { current_observation: this.state.data.current_observation,
+                          forecast: this.state.data.forecast};
+    return currWeather;
+  }
+
   setHourlyData() {
     return this.state.data.hourly_forecast.slice(0, 7);
+  }
+
+  setForecastData() {
+    return this.state.data.forecast.forecastday;
   }
 
 
@@ -31,9 +41,9 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to Weathrly</h1>
         </header>
-        <CurrentWeather data={this.state.data} />
+        <CurrentWeather data={this.setCurrentWeatherData()} />
         <SevenHour data={this.setHourlyData()} />
-        <TenDay data={this.state.data} />
+        <TenDay data={this.setForecastData()} />
       </div>
     );
   }
