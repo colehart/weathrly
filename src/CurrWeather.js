@@ -91,7 +91,7 @@ export default class CurrWeather extends Component {
 
   render() {
     return (
-      <section className="CurrWeather">
+      <section className="current-weather">
         <h1>Current Location: {this.state.currentLocation}</h1>
         <p>Current condition: {this.state.currentCondition}</p>
         <p>{this.state.today}</p>

@@ -15,7 +15,7 @@ describe('CurrWeather', () => {
   });
 
   it('should store current location', () => {
-    const currLocation = wrapper.currentLocation
+    const currLocation = wrapper.state().currentLocation
 
     expect(currLocation).toEqual('Louisville, KY');
   })

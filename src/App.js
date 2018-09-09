@@ -3,6 +3,7 @@ import './App.css';
 
 import data from './mockData';
 import CurrWeather from './CurrWeather';
+import SevenHour from './SevenHour';
 import TenDay from './TenDay';
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Weathrly</h1>
         </header>
         <CurrWeather data={this.state.data} />
+        <SevenHour data={this.state.data} />
         <TenDay data={this.state.data} />
       </div>
     );
