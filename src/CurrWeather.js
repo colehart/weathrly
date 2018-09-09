@@ -25,7 +25,7 @@ export default class CurrWeather extends Component {
   }
 
   getForecastInfo(data) {
-    return data.forecast.txt_forecast.forecastday
+    return data.forecast.txt_forecast.forecastday;
   }
 
   getSimpleForecast(data) {

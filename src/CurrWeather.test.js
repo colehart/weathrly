@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import CurrWeather from './CurrWeather';
-import data from './MockData';
+import data from './mockData';
 
 describe('CurrWeather', () => {
   let wrapper;

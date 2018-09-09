@@ -6,13 +6,25 @@ export default class TenDay extends Component {
     super(props);
 
     this.state = {
-      props: props || {}
+      data: data || {}
     }
   }
 
   render() {
-    <section className="TenDay">
-      <WeatherCard props={props}/>
-    </section>
+    return (
+      <section className="TenDay-container">
+        <h1>Ten Day Forecast</h1>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+      </section>
+    )
   }
 }
