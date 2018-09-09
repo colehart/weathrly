@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class CurrWeather extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       currentLocation: this.setCurrLocation(props.data),
