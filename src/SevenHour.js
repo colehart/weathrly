@@ -6,70 +6,40 @@ import WeatherCard from './WeatherCard';
 export default class SevenHour extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
 
     this.state = {
-      hour: this.setHour(props.data),
-      weatherIcon: this.setWeatherIcon(props.data),
-      projectedHrTemp: this.setProjectedHrTemp(props.data),
+      data: props.data || {}
     }
   }
 
-  getWeatherString(data) {
-    return 
-  }
-
   setWeatherIcon(data) {
-    const weatherString = this.getWeatherString(data)  
+    return data.icon;
   }
 
   setHour(data) {
-
+    return data.FCTTIME.civil;
   }
 
   setProjectedHrTemp(data) {
-
+    return data.temp;
   }
 
   render() {
     return (
-      <section className="seven-hour-container">
+      <section className="seven-hour">
         <h1>Seven Hour Forecast</h1>
-        <WeatherCard 
-          hour={this.state.hour} 
-          weatherIcon={this.state.weatherIcon}
-          projectedHrTemp={this.state.projectedHrTemp}
-        />
-        <WeatherCard 
-          hour={this.state.hour} 
-          weatherIcon={this.state.weatherIcon}
-          projectedHrTemp={this.state.projectedHrTemp}
-        />
-        <WeatherCard 
-          hour={this.state.hour} 
-          weatherIcon={this.state.weatherIcon}
-          projectedHrTemp={this.state.projectedHrTemp}
-        />
-        <WeatherCard 
-          hour={this.state.hour} 
-          weatherIcon={this.state.weatherIcon}
-          projectedHrTemp={this.state.projectedHrTemp}
-        />
-        <WeatherCard 
-          hour={this.state.hour} 
-          weatherIcon={this.state.weatherIcon}
-          projectedHrTemp={this.state.projectedHrTemp}
-        />
-        <WeatherCard 
-          hour={this.state.hour} 
-          weatherIcon={this.state.weatherIcon}
-          projectedHrTemp={this.state.projectedHrTemp}
-        />
-        <WeatherCard 
-          hour={this.state.hour} 
-          weatherIcon={this.state.weatherIcon}
-          projectedHrTemp={this.state.projectedHrTemp}
-        />
+        <div className="seven-hour-container"
+        {
+          this.state.data.map((hour, index) => {
+            return <WeatherCard
+                      hour={this.setHour(hour)}
+                      weatherIcon={this.setWeatherIcon(hour)}
+                      projectedHrTemp={this.setProjectedHrTemp(hour)}
+                      key={index}
+                    />
+          })
+        }
+        </div>
       </section>
     )
   }
