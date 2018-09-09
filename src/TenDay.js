@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import WeatherCard from './WeatherCard';
 
 export default class TenDay extends Component {
@@ -6,13 +7,13 @@ export default class TenDay extends Component {
     super(props);
 
     this.state = {
-      data: data || {}
+      data: props.data || {}
     }
   }
 
   render() {
     return (
-      <section className="TenDay-container">
+      <section className="ten-day-container">
         <h1>Ten Day Forecast</h1>
         <WeatherCard data={this.state.data}/>
         <WeatherCard data={this.state.data}/>

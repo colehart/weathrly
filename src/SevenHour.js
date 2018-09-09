@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
 
+import WeatherCard from './WeatherCard';
+
+
 export default class SevenHour extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
 
     this.state = {
-      hour: this.getHour(props.data);
-      // hour: ,
-      // icon: ,
-      // projectedTemp:
+      data: props.data || {}
     }
-  }
-
-  getHour(data) {
-
   }
 
   render() {
     return (
-      <div className="seven-hour">
-        <h1>Hour: {this.state.hour}</h1>
-        <p>icon: {this.state.icon}</p>
-        <p>icon: {this.state.icon}</p>
-      </div>
+      <section className="seven-hour-container">
+        <h1>Seven Hour Forecast</h1>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+        <WeatherCard data={this.state.data}/>
+      </section>
     )
   }
 }
