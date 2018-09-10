@@ -2,38 +2,39 @@ import React, { Component } from 'react';
 
 export default class WeatherCard extends Component {
   constructor(props) {
-    super(props);
+    super();
 
     this.state = {
       hour: props.hour || '',
       weekday: props.weekday || [],
       weatherIcon: props.weatherIcon || '',
-      projectedHrTemp: props.projectHrTemp || '',
-      highTempF: props.highTempF,
-      highTempC: props.highTempC,
-      lowTempF: props.lowTempF,
-      lowTempC: props.lowTempC,
+      projectedHrTempF: props.projectedHrTempF || '',
+      projectedHrTempC: props.projectedHrTempC || '',
+      highTempF: props.highTempF || '',
+      highTempC: props.highTempC || '',
+      lowTempF: props.lowTempF || '',
+      lowTempC: props.lowTempC || ''
     }
   }
 
   render() {
+    const imgPath = require(`./assets/images/${this.state.weatherIcon}.svg`)
+
     if (this.state.hour) {
       return (
-        <section className="WeatherCard">
+        <section className="weather-card">
           <h2>{this.state.hour}</h2>
-          <img href="{this.state.weatherIcon}.svg" alt="weather icon"/>
-          <h2>{this.state.projectedHrTemp}</h2>
+          <img className="weather-icon" src={imgPath} alt="weather icon"/>
+          <h2>{this.state.projectedHrTempF}&deg; F / {this.state.projectedHrTempC}&deg; C</h2>
         </section>
       )
     } else {
       return (
-        <section className="WeatherCard">
+        <section className="weather-card">
           <h2>{this.state.weekday}</h2>
-          <img href="{this.state.weatherIcon}.svg" alt="weather icon"/>
-          <h1><span className="weatherHiLo">High:</span> {this.state.projectedHigh}</h1>
-          <h2>{this.state.weeknight}</h2>
-          <img href="{this.state.weatherIcon}.svg" alt="weather icon"/>
-          <h1><span className="weatherHiLo">Low:</span> {this.state.projectedLow}</h1>
+          <img className="weather-icon" src={imgPath} alt="weather icon"/>
+          <h3><span className="card-high-low">High:</span> {this.state.highTempF}&deg; F / {this.state.highTempC}&deg; C</h3>
+          <h3><span className="card-high-low">Low:</span> {this.state.lowTempF}&deg; F / {this.state.lowTempC}&deg; C</h3>
         </section>
       )
     }
