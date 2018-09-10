@@ -26,8 +26,8 @@ export default class SevenHour extends Component {
   render() {
     return (
       <section className="seven-hour">
-        <h1>Seven Hour Forecast</h1>
-        <div className="seven-hour-container">
+        <h1 aria-label="Seven Hour Forecast title">Seven Hour Forecast</h1>
+        <div className="seven-hour-container" aria-label="Seven Hour Weather Card">
           {
             this.state.data.map((hour, index) => {
               return <WeatherCard
