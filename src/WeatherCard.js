@@ -5,13 +5,14 @@ export default class WeatherCard extends Component {
     super(props);
 
     this.state = {
-      hour: props.data.hour || '',
-      weekday: props.data.weekday || '',
-      weeknight: props.data.weeknight || '',
-      weatherIcon: props.data.weatherIcon || '',
-      projectedHrTemp: props.data.projectHrTemp || '',
-      projectedHigh: props.data.projectedHigh || '',
-      projectedLow: props.data.projectedLow || ''
+      hour: props.hour || '',
+      weekday: props.weekday || [],
+      weatherIcon: props.weatherIcon || '',
+      projectedHrTemp: props.projectHrTemp || '',
+      highTempF: props.highTempF,
+      highTempC: props.highTempC,
+      lowTempF: props.lowTempF,
+      lowTempC: props.lowTempC,
     }
   }
 
@@ -20,7 +21,7 @@ export default class WeatherCard extends Component {
       return (
         <section className="WeatherCard">
           <h2>{this.state.hour}</h2>
-          <img href="{this.state.weatherIcon}.svg"/>
+          <img href="{this.state.weatherIcon}.svg" alt="weather icon"/>
           <h2>{this.state.projectedHrTemp}</h2>
         </section>
       )
@@ -28,12 +29,13 @@ export default class WeatherCard extends Component {
       return (
         <section className="WeatherCard">
           <h2>{this.state.weekday}</h2>
-          <img href="{this.state.weatherIcon}.svg"/>
-          <h1>High: {this.state.projectedHigh}</h1>
+          <img href="{this.state.weatherIcon}.svg" alt="weather icon"/>
+          <h1><span className="weatherHiLo">High:</span> {this.state.projectedHigh}</h1>
           <h2>{this.state.weeknight}</h2>
-          <img href="{this.state.weatherIcon}.svg"/>
-          <h1>Low: {this.state.projectedLow}</h1>
+          <img href="{this.state.weatherIcon}.svg" alt="weather icon"/>
+          <h1><span className="weatherHiLo">Low:</span> {this.state.projectedLow}</h1>
         </section>
       )
+    }
   }
 }
