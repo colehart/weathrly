@@ -26,8 +26,8 @@ export default class TenDay extends Component {
   render() {
     return (
       <section className="ten-day">
-        <h1>Ten Day Forecast</h1>
-        <div className="ten-day-container">
+        <h1 aria-label="Ten Day Forecast title">Ten Day Forecast</h1>
+        <div className="ten-day-container" aria-label="Ten Day Weather Card">
           {
             this.state.data.map((day, index) => {
               return <WeatherCard

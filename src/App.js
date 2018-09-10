@@ -42,8 +42,8 @@ class App extends Component {
     return (
       <div className="App">
       {/* Add Header Component */}
-        <header className="App-header">
-          <h1 className="App-title">Welcome to Weathrly</h1>
+        <header className="App-header" aria-label="Weathrly application header">
+          <h1 className="App-title" aria-label="Application title">Welcome to Weathrly</h1>
         </header>
         <CurrentWeather data={this.setCurrentWeatherData()} />
         <SevenHour data={this.setHourlyData()} />
