@@ -92,15 +92,15 @@ export default class CurrentWeather extends Component {
   render() {
     return (
       <section className="current-weather">
-        <h1>Current Location: {this.state.currentLocation}</h1>
-        <p>Current condition: {this.state.currentCondition}</p>
-        <p>{this.state.today}</p>
-        <p>icon: {this.state.icon}</p>
-        <p>{this.state.currentTempF}&deg; F /<span> {this.state.currentTempC}&deg; C</span></p>
-        <p>Feels Like: {this.state.feelsLike}</p>
-        <p>Todays High: {this.state.todayHighF}&deg; F /<span> {this.state.todayHighC}&deg; C</span></p>
-        <p>Todays Low: {this.state.todayLowF}&deg; F /<span> {this.state.todayLowC}&deg; C</span></p>
-        <p>Weather Summary: {this.state.todaySummary}</p>
+        <h1 aria-label="Current city">Current Location: {this.state.currentLocation}</h1>
+        <p aria-label="Current weather condition">Current condition: {this.state.currentCondition}</p>
+        <p aria-label="Today">{this.state.today}</p>
+        <p aria-label="Current weather description">icon: {this.state.icon}</p>
+        <p aria-label="Current temperature in fahrenheit and celsius">{this.state.currentTempF}&deg; F /<span> {this.state.currentTempC}&deg; C</span></p>
+        <p aria-label="Current weather feels like">Feels Like: {this.state.feelsLike}</p>
+        <p aria-label="Daily high temperature">Todays High: {this.state.todayHighF}&deg; F /<span> {this.state.todayHighC}&deg; C</span></p>
+        <p aria-label="Daily low temperature">Todays Low: {this.state.todayLowF}&deg; F /<span> {this.state.todayLowC}&deg; C</span></p>
+        <p aria-label="Summary of current weather">Weather Summary: {this.state.todaySummary}</p>
       </section>
     )
   }
