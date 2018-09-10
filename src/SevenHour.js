@@ -4,7 +4,7 @@ import WeatherCard from './WeatherCard';
 
 export default class SevenHour extends Component {
   constructor(props) {
-    super(props);
+    super();
 
     this.state = {
       data: props.data || []
@@ -19,8 +19,8 @@ export default class SevenHour extends Component {
     return data.FCTTIME.civil;
   }
 
-  setProjectedHrTemp(data) {
-    return data.temp.english;
+  setProjectedHrTemp(data, degreeType) {
+    return data.temp[degreeType];
   }
 
   render() {
@@ -33,7 +33,8 @@ export default class SevenHour extends Component {
               return <WeatherCard
                         hour={this.setHour(hour)}
                         weatherIcon={this.setWeatherIcon(hour)}
-                        projectedHrTemp={this.setProjectedHrTemp(hour)}
+                        projectedHrTempF={this.setProjectedHrTemp(hour, 'english')}
+                        projectedHrTempC={this.setProjectedHrTemp(hour, 'metric')}
                         key={index}
                       />
             })
