@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class WeatherCard extends Component {
   constructor(props) {
-    super(props);
+    super();
 
     this.state = {
       hour: props.hour || '',
@@ -18,25 +18,23 @@ export default class WeatherCard extends Component {
   }
 
   render() {
-    const imgPath = `./assets/images/${this.state.weatherIcon}.png`
+    const imgPath = require(`./assets/images/${this.state.weatherIcon}.svg`)
 
-    console.log(imgPath)
     if (this.state.hour) {
-      console.log(this.state)
       return (
-        <section className="WeatherCard">
+        <section className="weather-card">
           <h2>{this.state.hour}</h2>
-          <img src={imgPath} alt="weather icon"/>
+          <img className="weather-icon" src={imgPath} alt="weather icon"/>
           <h2>{this.state.projectedHrTempF}&deg; F / {this.state.projectedHrTempC}&deg; C</h2>
         </section>
       )
     } else {
       return (
-        <section className="WeatherCard">
+        <section className="weather-card">
           <h2>{this.state.weekday}</h2>
-          <img src={imgPath} alt="weather icon"/>
-          <h3><span className="weatherHiLo">High:</span> {this.state.highTempF}&deg; F / {this.state.highTempC}&deg; C</h3>
-          <h3><span className="weatherHiLo">Low:</span> {this.state.lowTempF}&deg; F / {this.state.lowTempC}&deg; C</h3>
+          <img className="weather-icon" src={imgPath} alt="weather icon"/>
+          <h3><span className="card-high-low">High:</span> {this.state.highTempF}&deg; F / {this.state.highTempC}&deg; C</h3>
+          <h3><span className="card-high-low">Low:</span> {this.state.lowTempF}&deg; F / {this.state.lowTempC}&deg; C</h3>
         </section>
       )
     }

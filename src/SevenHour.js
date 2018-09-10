@@ -4,7 +4,7 @@ import WeatherCard from './WeatherCard';
 
 export default class SevenHour extends Component {
   constructor(props) {
-    super(props);
+    super();
 
     this.state = {
       data: props.data || []
