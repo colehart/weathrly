@@ -19,6 +19,10 @@ class App extends Component {
   //   this.setState({});
   // };
 
+  componentWillMount() {
+
+  }
+
   setCurrentWeatherData() {
     const currWeather = { current_observation: this.state.data.current_observation,
                           forecast: this.state.data.forecast};
@@ -30,7 +34,7 @@ class App extends Component {
   }
 
   setForecastData() {
-    return this.state.data.forecast.forecastday;
+    return this.state.data.forecast.simpleforecast.forecastday;
   }
 
 

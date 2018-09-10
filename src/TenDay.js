@@ -7,33 +7,20 @@ export default class TenDay extends Component {
     super(props);
 
     this.state = {
-      data: props.data || {}
+      data: props.data || []
     }
   }
 
-  getForecastInfo(data) {
-    return data.forecast.txt_forecast.forecastday;
-    //returns an array
-  }
-
   setWeekday(data) {
-
-  }
-
-  setWeeknight(data) {
-
+    return data.date.weekday;
   }
 
   setWeatherIcon(data) {
-
+    return data.icon;
   }
 
-  setProjectedHigh(data) {
-
-  }
-
-  setProjectedLow(data) {
-
+  setProjectedTemp(day, degreeType, hiLow) {
+    return day[hiLow][degreeType];
   }
 
   render() {
@@ -41,17 +28,18 @@ export default class TenDay extends Component {
       <section className="ten-day">
         <h1>Ten Day Forecast</h1>
         <div className="ten-day-container">
-        {
-          this.state.data.map((day, index) => {
-            return <WeatherCard
-                weekday={this.setWeekday(day)}
-                weeknight={this.setWeeknight(day)}
-                weatherIcon={this.setWeatherIcon(day)}
-                projectedHigh={this.setProjectedHigh(day)}
-                projectedLow={this.setProjectedLow(day)}
-                key={index}
+          {
+            this.state.data.map((day, index) => {
+              return <WeatherCard
+                  weekday={this.setWeekday(day)}
+                  weatherIcon={this.setWeatherIcon(day)}
+                  highTempF={this.setProjectedTemp(day, 'fahrenheit', 'high')}
+                  lowTempF={this.setProjectedTemp(day, 'fahrenheit', 'low')}
+                  highTempC={this.setProjectedTemp(day, 'celsius', 'high')}
+                  lowTempC={this.setProjectedTemp(day, 'celsius', 'low')}
+                  key={index}
               />
-          }
+          })
         }
         </div>
       </section>
