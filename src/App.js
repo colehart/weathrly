@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import data from './mockData';
+import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
@@ -41,10 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      {/* Add Header Component */}
-        <header className="App-header" aria-label="Weathrly application header">
-          <h1 className="App-title" aria-label="Application title">Welcome to Weathrly</h1>
-        </header>
+        <Header />
         <CurrentWeather data={this.setCurrentWeatherData()} />
         <SevenHour data={this.setHourlyData()} />
         <TenDay data={this.setForecastData()} />
