@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import './Header.css'
+import './Welcome.css'
 
-export default class Header extends Component {
+export default class Welcome extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      location: props.location || ''
+      location: ''
     }
   }
 
@@ -30,9 +30,9 @@ export default class Header extends Component {
     const { location } = this.state;
 
     return (
-      <header className="App-header" aria-label="Weathrly application header">
-        <h1 className="App-title" aria-label="Application title">Welcome to Weathrly</h1>
-        <p className="App-intro" aria-label="App description">Please enter your city and state or five-digit zip code to get started.</p>
+      <div className="welcome-container">
+        <h1 className="welcome-title" aria-label="Application title">Welcome to Weathrly</h1>
+        <p className="welcome-intro" aria-label="App description">Please enter your city and state or five-digit zip code to get started.</p>
         <form>
           <input
             aria-label="Enter your city and state or five-digit zip here"
@@ -46,7 +46,7 @@ export default class Header extends Component {
             Show My Weather
           </button>
         </form>
-      </header>
+      </div>
     )
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import data from './mockData';
+import Welcome from './Welcome';
 import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
@@ -25,6 +26,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getFromLocalStorage();
+    // this.getWeather();
   }
 
   getFromLocalStorage() {
@@ -57,18 +59,24 @@ class App extends Component {
     return this.state.data.forecast.simpleforecast.forecastday;
   }
 
-
   render() {
     const { location } = this.state;
-
-    return (
-      <div className="App">
-        <Header location={ location } addLocation={this.addLocation}/>
-        <CurrentWeather data={this.setCurrentWeatherData()} />
-        <SevenHour data={this.setHourlyData()} />
-        <TenDay data={this.setForecastData()} />
-      </div>
-    );
+    if (location) {
+      return (
+        <div className="App">
+          <Header location={ location } addLocation={this.addLocation}/>
+          <CurrentWeather data={this.setCurrentWeatherData()} />
+          <SevenHour data={this.setHourlyData()} />
+          <TenDay data={this.setForecastData()} />
+        </div>
+      )
+    } else {
+      return (
+        <div className="Welcome">
+          <Welcome location={ location } addLocation={this.addLocation}/>
+        </div>
+      )
+    }
   }
 }
 

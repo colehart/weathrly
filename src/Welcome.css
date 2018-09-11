@@ -1,0 +1,31 @@
+.welcome-container {
+  background-color: #f87ef3;
+  background-image: linear-gradient(to bottom left, #f87ef3, #00e1d0);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  color: white;
+}
+
+.welcome-title {
+  font-size: 1.5em;
+}
+
+.welcome-intro {
+  font-size: large;
+}
+
+form {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  margin: 10px auto;
+  width: 50%;
+}
