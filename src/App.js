@@ -12,16 +12,35 @@ class App extends Component {
     super();
 
     this.state = {
-      data: data || {}
+      data: data || {},
+      location: ''
     }
+
+    this.addLocation = this.addLocation.bind(this);
   }
 
   // getWeather = () => {
   //   this.setState({});
   // };
 
-  componentWillMount() {
+  componentDidMount() {
+    this.getFromLocalStorage();
+  }
 
+  getFromLocalStorage() {
+    const location = localStorage.getItem('location')
+
+    if (location) {
+      this.setState({ location: JSON.parse(location) })
+    }
+  }
+
+  addLocation(newLocation) {
+    this.setState({ location: newLocation }, this.updateLocalStorage)
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('location', JSON.stringify(this.state.location))
   }
 
   setCurrentWeatherData() {
@@ -42,7 +61,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header location={ location } addLocation={this.addLocation}/>
         <CurrentWeather data={this.setCurrentWeatherData()} />
         <SevenHour data={this.setHourlyData()} />
         <TenDay data={this.setForecastData()} />

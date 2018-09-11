@@ -7,14 +7,13 @@ export default class Header extends Component {
     super(props);
 
     this.state = {
-      location: ''
+      location: props.location || ''
     }
   }
 
-  submitIdea() {
+  submitLocation() {
     const { location } = this.state;
-
-    const locale = { id: Date.now, location }
+    const locale = { id: Date.now, location };
 
     this.props.addLocation(locale)
     this.setState({ location: '' })
@@ -22,8 +21,8 @@ export default class Header extends Component {
 
   submitOnEnter(e) {
     if (e.keyCode === 13) {
-      document.getElementById('title-field').focus()
-      this.submitIdea()
+      document.getElementById('location-field').focus()
+      this.submitLocation()
     }
   }
 
@@ -41,8 +40,7 @@ export default class Header extends Component {
             onChange={ (e) => this.setState({ location: e.target.value })}
             onKeyDown={ (e) => this.submitOnEnter(e) } />
           <button onClick={ () => this.submitLocation() }
-                  disabled={ !location }
-                  type="submit">
+                  disabled={ !location }>
             Show My Weather
           </button>
         </form>
