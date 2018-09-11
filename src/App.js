@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 
-
-import data from './mockData';
+import newData from './mockData';
 import apiKey from './assets/Key';
 import Welcome from './Welcome';
 import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
+// let newData;
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: data || {},
-      // data: {},
+      data: newData || {},
       location: ''
     }
 
@@ -24,8 +23,22 @@ export default class App extends Component {
     this.addLocation = this.addLocation.bind(this);
   }
 
+  formatFetch() {
+    const fetchLocation = this.state.location;
+
+    if (typeof fetchLocation === "number") {
+      return `http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/${fetchLocation}.json`
+    } else {
+      const splitLocation = fetchLocation.split(', ')
+
+      return `http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/${splitLocation[1]}/${splitLocation[0]}.json`
+    }
+  }
+
   getWeather() {
-    fetch(`http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/CO/Denver.json`)
+    const fetchPath = this.formatFetch();
+
+    fetch(`${fetchPath}`)
       .then(response => response.json())
       .then(newData => {
         this.setState({

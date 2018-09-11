@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import './Welcome.css'
-
-export default class Welcome extends Component {
+export default class Search extends Component {
   constructor(props) {
     super(props);
 
@@ -13,10 +11,10 @@ export default class Welcome extends Component {
 
   submitLocation(e) {
     const { location } = this.state;
-    const zipRegEx = new RegExp('^[0-9]{5}$');
-    const cityStRegEx = new RegExp('^(?<city>[A-z]+(?: [A-z]+)*), (?<state>A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADL N]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])$')
-
-    if (!zipRegEx.test(location) && !cityStRegEx.test(location)) {
+    const zipRegEx = new RegExp('^[0-9]{5}$')
+    // const cityStRegEx = new RegExp('^(?[A-Z]([a-z])+(\.?)(\x20[A-Z]([a-z])+){0,2})\, \x20(?<state>A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADL N]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD] |T[NX]|UT|V[AIT]|W[AIVY]))$')
+// !cityStRegEx.test(location) ||
+    if (!zipRegEx.test(location)) {
       alert('Please enter your location in either of the following formats:\n five-digit zip code (ex: 80203) or City, Two-Letter State Abbreviation (ex: Denver, CO)')
     } else {
       const locale = { location };
