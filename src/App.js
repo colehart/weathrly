@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import data from './mockData';
+
+// import data from './mockData';
+import apiKey from './assets/Key';
 import Welcome from './Welcome';
 import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
+let data;
 
 class App extends Component {
   constructor() {
@@ -20,13 +23,22 @@ class App extends Component {
     this.addLocation = this.addLocation.bind(this);
   }
 
-  // getWeather = () => {
-  //   this.setState({});
-  // };
+  getWeather() {
+    fetch(`http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/CO/Denver.json`)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          data: data
+        })
+      })
+      .catch(error => {
+        throw new Error(error);
+      })
+  };
 
   componentDidMount() {
     this.getFromLocalStorage();
-    // this.getWeather();
+    this.getWeather();
   }
 
   getFromLocalStorage() {
