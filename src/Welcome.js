@@ -13,7 +13,7 @@ export default class Welcome extends Component {
 
   submitLocation() {
     const { location } = this.state;
-    const locale = { id: Date.now, location };
+    const locale = { location };
 
     this.props.addLocation(locale)
     this.setState({ location: '' })
