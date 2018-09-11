@@ -14,7 +14,6 @@ input {
 
 ::placeholder {
   color: gray;
-  text-align: center;
   font-size: 0.75rem;
 }
 
@@ -32,4 +31,11 @@ button:hover {
   background-color: white;
   color: #74b8df;
   font-weight: bold;
+}
+
+button:disabled {
+  color: white;
+  background-color: transparent;
+  border: 3px solid white;
+  font-weight: normal;
 }

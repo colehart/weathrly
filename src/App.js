@@ -33,7 +33,7 @@ class App extends Component {
     const location = localStorage.getItem('location')
 
     if (location) {
-      this.setState({ location: JSON.parse(location) })
+      this.setState({ location: JSON.parse(location).location })
     }
   }
 
@@ -61,6 +61,7 @@ class App extends Component {
 
   render() {
     const { location } = this.state;
+
     if (location) {
       return (
         <div className="App">

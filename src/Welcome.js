@@ -33,7 +33,7 @@ export default class Welcome extends Component {
       <div className="welcome-container">
         <h1 className="welcome-title" aria-label="Application title">Welcome to Weathrly</h1>
         <p className="welcome-intro" aria-label="App description">Please enter your city and state or five-digit zip code to get started.</p>
-        <form>
+        <section className="welcome-form">
           <input
             aria-label="Enter your city and state or five-digit zip here"
             id='location-field'
@@ -45,7 +45,7 @@ export default class Welcome extends Component {
                   disabled={ !location }>
             Show My Weather
           </button>
-        </form>
+        </section>
       </div>
     )
   }

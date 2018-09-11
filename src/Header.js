@@ -7,16 +7,16 @@ export default class Header extends Component {
     super(props);
 
     this.state = {
-      location: props.location || ''
+      location: ''
     }
   }
 
   submitLocation() {
     const { location } = this.state;
     const locale = { id: Date.now, location };
-
-    this.props.addLocation(locale)
-    this.setState({ location: '' })
+    this.props.addLocation(locale);
+    this.setState({ location: '' });
+    console.log(this.state.location);
   }
 
   submitOnEnter(e) {
@@ -30,14 +30,13 @@ export default class Header extends Component {
     const { location } = this.state;
 
     return (
-      <header className="App-header" aria-label="Weathrly application header">
-        <h1 className="App-title" aria-label="Application title">Welcome to Weathrly</h1>
-        <p className="App-intro" aria-label="App description">Please enter your city and state or five-digit zip code to get started.</p>
-        <form>
+      <header className="app-header" aria-label="Weathrly application header">
+        <h1 className="app-title" aria-label="Application title">Welcome to Weathrly</h1>
+        <p className="app-intro" aria-label="App description">Please enter your city and state or five-digit zip code to get started.</p>
+        <section className="header-form">
           <input
             aria-label="Enter your city and state or five-digit zip here"
             id='location-field'
-            value={ location }
             placeholder="Denver, CO or 80202"
             onChange={ (e) => this.setState({ location: e.target.value })}
             onKeyDown={ (e) => this.submitOnEnter(e) } />
@@ -45,7 +44,7 @@ export default class Header extends Component {
                   disabled={ !location }>
             Show My Weather
           </button>
-        </form>
+        </section>
       </header>
     )
   }

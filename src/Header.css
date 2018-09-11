@@ -1,4 +1,4 @@
-.App-header {
+.app-header {
   background-color: #f87ef3;
   background-image: linear-gradient(to bottom left, #f87ef3, #00e1d0);
   height: 150px;
@@ -6,10 +6,24 @@
   color: white;
 }
 
-.App-title {
+.app-title {
   font-size: 1.5em;
 }
 
-.App-intro {
+.app-intro {
   font-size: large;
+}
+
+.header-form input {
+  width: 60%;
+  padding-left: 10px;
+}
+
+.header-form button {
+  margin-left: 10px;
+  width: 20%;
+}
+
+.header-form ::placeholder {
+  text-align: left;
 }
