@@ -59,6 +59,8 @@ class App extends Component {
 
 
   render() {
+    const { location } = this.state;
+
     return (
       <div className="App">
         <Header location={ location } addLocation={this.addLocation}/>

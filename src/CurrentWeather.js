@@ -45,7 +45,7 @@ export default class CurrentWeather extends Component {
   }
 
   setToday(data) {
-    const today = this.getForecastInfo(data)[0].title;
+    const today = this.getObservationInfo(data).observation_time;
 
     return today;
   }
@@ -87,14 +87,14 @@ export default class CurrentWeather extends Component {
 
     return (
       <section className="current-weather">
-        <h1 aria-label="Current city">Current Location: {this.state.currentLocation}</h1>
-        <p aria-label="Current weather condition">Current condition: {this.state.currentCondition}</p>
+        <h1 aria-label="Current city">Current Conditions in {this.state.currentLocation}</h1>
         <p aria-label="Today">{this.state.today}</p>
+        <h2 aria-label="Current weather condition">{this.state.currentCondition}</h2>
         <img className="weather-icon" src={imgPath} alt="weather icon" />
         <p aria-label="Current temperature in fahrenheit and celsius">{this.state.currentTempF}&deg; F /<span> {this.state.currentTempC}&deg; C</span></p>
         <p aria-label="Daily high temperature">Todays High: {this.state.todayHighF}&deg; F /<span> {this.state.todayHighC}&deg; C</span></p>
         <p aria-label="Daily low temperature">Todays Low: {this.state.todayLowF}&deg; F /<span> {this.state.todayLowC}&deg; C</span></p>
-        <p aria-label="Summary of current weather">Weather Summary: {this.state.todaySummary}</p>
+        <p aria-label="Summary of current weather">{this.state.todaySummary}</p>
       </section>
     )
   }

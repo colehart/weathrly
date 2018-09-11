@@ -1,4 +1,4 @@
-import React, { Component } from 'React';
+import React, { Component } from 'react';
 
 import './Header.css'
 
@@ -27,6 +27,7 @@ export default class Header extends Component {
   }
 
   render() {
+    const { location } = this.state;
     return (
       <header className="App-header" aria-label="Weathrly application header">
         <h1 className="App-title" aria-label="Application title">Welcome to Weathrly</h1>
