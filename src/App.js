@@ -20,6 +20,7 @@ class App extends Component {
       location: ''
     }
 
+    this.getWeather = this.getWeather.bind(this);
     this.addLocation = this.addLocation.bind(this);
   }
 
@@ -45,7 +46,7 @@ class App extends Component {
     const location = localStorage.getItem('location')
 
     if (location) {
-      this.setState({ location: JSON.parse(location).location })
+      this.setState({ location: JSON.parse(location) })
     }
   }
 

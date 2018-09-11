@@ -13,10 +13,9 @@ export default class Header extends Component {
 
   submitLocation() {
     const { location } = this.state;
-    const locale = { id: Date.now, location };
+    const locale = { location };
     this.props.addLocation(locale);
     this.setState({ location: '' });
-    console.log(this.state.location);
   }
 
   submitOnEnter(e) {
@@ -37,6 +36,7 @@ export default class Header extends Component {
           <input
             aria-label="Enter your city and state or five-digit zip here"
             id='location-field'
+            value={ location }
             placeholder="Denver, CO or 80202"
             onChange={ (e) => this.setState({ location: e.target.value })}
             onKeyDown={ (e) => this.submitOnEnter(e) } />
