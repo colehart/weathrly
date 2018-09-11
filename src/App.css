@@ -1,4 +1,8 @@
-.App {
+.App, .Welcome {
   text-align: center;
+}
+
+.Welcome {
+  height: 100vh;
 }
 
