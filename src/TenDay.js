@@ -12,7 +12,8 @@ export default class TenDay extends Component {
   }
 
   setWeekday(data) {
-    return data.date.weekday;
+    const weekday = `${data.date.weekday}, ${data.date.monthname} ${data.date.day}`
+    return weekday;
   }
 
   setWeatherIcon(data) {

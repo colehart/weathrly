@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import data from './mockData';
+import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
@@ -11,16 +12,35 @@ class App extends Component {
     super();
 
     this.state = {
-      data: data || {}
+      data: data || {},
+      location: ''
     }
+
+    this.addLocation = this.addLocation.bind(this);
   }
 
   // getWeather = () => {
   //   this.setState({});
   // };
 
-  componentWillMount() {
+  componentDidMount() {
+    this.getFromLocalStorage();
+  }
 
+  getFromLocalStorage() {
+    const location = localStorage.getItem('location')
+
+    if (location) {
+      this.setState({ location: JSON.parse(location) })
+    }
+  }
+
+  addLocation(newLocation) {
+    this.setState({ location: newLocation }, this.updateLocalStorage)
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('location', JSON.stringify(this.state.location))
   }
 
   setCurrentWeatherData() {
@@ -39,12 +59,11 @@ class App extends Component {
 
 
   render() {
+    const { location } = this.state;
+
     return (
       <div className="App">
-      {/* Add Header Component */}
-        <header className="App-header" aria-label="Weathrly application header">
-          <h1 className="App-title" aria-label="Application title">Welcome to Weathrly</h1>
-        </header>
+        <Header location={ location } addLocation={this.addLocation}/>
         <CurrentWeather data={this.setCurrentWeatherData()} />
         <SevenHour data={this.setHourlyData()} />
         <TenDay data={this.setForecastData()} />

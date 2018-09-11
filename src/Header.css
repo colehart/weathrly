@@ -1,0 +1,15 @@
+.App-header {
+  background-color: #f87ef3;
+  background-image: linear-gradient(to bottom left, #f87ef3, #00e1d0);
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
