@@ -18,6 +18,7 @@ export default class Header extends Component {
 
     if (!zipRegEx.test(location) && !cityStRegEx.test(location)) {
       alert('Please enter your location in either of the following formats:\n five-digit zip code (ex: 80203) or City, Two-Letter State Abbreviation (ex: Denver, CO)')
+
     } else {
       this.props.addLocation(location)
       this.setState({ location: '' })

@@ -55,24 +55,24 @@ export default class App extends Component {
 
   componentDidMount() {
     this.getFromLocalStorage();
-    this.getWeather();
   }
 
   getFromLocalStorage() {
-    const location = localStorage.getItem('location')
+    const storedLocation = JSON.parse(localStorage.getItem('location'))
 
-    if (location) {
-      this.setState({ location: JSON.parse(location) })
+    if (storedLocation) {
+      this.setState({ location: storedLocation }, this.getWeather)
     }
   }
 
   addLocation(newLocation) {
     this.setState({ location: newLocation }, this.updateLocalStorage)
-    this.getWeather()
   }
 
   updateLocalStorage() {
     localStorage.setItem('location', JSON.stringify(this.state.location))
+    debugger;
+    this.getWeather()
   }
 
   setCurrentWeatherData() {
@@ -92,12 +92,12 @@ export default class App extends Component {
   render() {
     const { location } = this.state;
     const { data } = this.state;
+    let oldLocale;
     if (data.response) {
-      const oldLocale = data.current_observation.display_location.full
+      oldLocale = data.current_observation.display_location.full
     }
 
-    debugger;
-    if (location && data.response && location !== oldLocale) {
+    if (location && data.response) {
       return (
         <div className="App">
           <Header location={ location } addLocation={this.addLocation}/>
