@@ -11,7 +11,7 @@ export default class Header extends Component {
     }
   }
 
-  submitLocation(e) {
+  submitLocation() {
     const { location } = this.state;
     const zipRegEx = new RegExp('^[0-9]{5}$');
     const cityStRegEx = new RegExp('^(?<city>[A-z]+(?: [A-z]+)*), (?<state>A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADL N]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])$')
@@ -47,8 +47,8 @@ export default class Header extends Component {
             placeholder="Denver, CO or 80202"
             onChange={ (e) => this.setState({ location: e.target.value })}
             onKeyDown={ (e) => this.submitOnEnter(e) } />
-          <button onClick={ (e) => this.submitLocation(e) }
-                  disabled={ !location }>
+          <button onClick={ () => {this.submitLocation()}}
+            disabled={ !location }>
             Change Location
           </button>
         </section>

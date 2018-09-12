@@ -19,7 +19,6 @@ export default class App extends Component {
       location: ''
     }
 
-    this.getWeather = this.getWeather.bind(this);
     this.addLocation = this.addLocation.bind(this);
   }
 
@@ -78,12 +77,6 @@ export default class App extends Component {
     // handleChange to render new location weather data
   }
 
-  setCurrentWeatherData() {
-    const currWeather = { current_observation: this.state.data.current_observation,
-                          forecast: this.state.data.forecast};
-    return currWeather;
-  }
-
   setHourlyData() {
     return this.state.data.hourly_forecast.slice(0, 7);
   }
@@ -95,15 +88,24 @@ export default class App extends Component {
   render() {
     const { location } = this.state;
     const { data } = this.state;
-    // handleChange in location
 
     if (location && data.response) {
       return (
         <div className="App">
           <Header location={ location } addLocation={this.addLocation}/>
-          <CurrentWeather data={this.setCurrentWeatherData()} />
-          <SevenHour data={this.setHourlyData()} />
-          <TenDay data={this.setForecastData()} />
+          <CurrentWeather currentLocation={this.state.data.current_observation.display_location.full}
+            currentCondition={this.state.data.current_observation.weather}
+            today={this.state.data.current_observation.observation_time}
+            weatherIcon={this.state.data.current_observation.icon}
+            currentTempF={this.state.data.current_observation.temp_f}
+            currentTempC={this.state.data.current_observation.temp_c}
+            todayHighF={this.state.data.forecast.simpleforecast.forecastday[0].high.fahrenheit}
+            todayHighC={this.state.data.forecast.simpleforecast.forecastday[0].high.celsius}
+            todayLowF={this.state.data.forecast.simpleforecast.forecastday[0].low.fahrenheit}
+            todayLowC={this.state.data.forecast.simpleforecast.forecastday[0].low.celsius}
+            todaySummary={this.state.data.forecast.txt_forecast.forecastday[0].fcttext} />
+          <SevenHour data={this.state.data.hourly_forecast.slice(0, 7)} />
+          <TenDay data={this.state.data.forecast.simpleforecast.forecastday} />
         </div>
       )
     } else {
