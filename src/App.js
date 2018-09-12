@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import newData from './mockData';
+// import newData from './mockData';
 import apiKey from './assets/Key';
 import Welcome from './Welcome';
 import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
-// let newData;
+let newData;
 
 export default class App extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class App extends Component {
   formatFetch() {
     const fetchLocation = this.state.location;
 
-    if (typeof fetchLocation === "number") {
+    if (parseInt(fetchLocation, 10)) {
       return `http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/${fetchLocation}.json`
     } else {
       const splitLocation = fetchLocation.split(', ')
@@ -36,23 +36,26 @@ export default class App extends Component {
   }
 
   getWeather() {
-    const fetchPath = this.formatFetch();
+    if (this.state.location) {
+      const fetchPath = this.formatFetch();
 
-    fetch(`${fetchPath}`)
-      .then(response => response.json())
-      .then(newData => {
-        this.setState({
-          data: newData
+      fetch(`${fetchPath}`)
+        .then(response => response.json())
+        .then(newData => {
+          this.setState({
+            data: newData
+          })
         })
-      })
-      .catch(error => {
-        throw new Error(error);
-      })
+        .catch(error => {
+          debugger;
+          throw new Error(error);
+        })
+    }
   };
 
   componentDidMount() {
     this.getFromLocalStorage();
-    // this.getWeather();
+    this.getWeather();
   }
 
   getFromLocalStorage() {
@@ -65,6 +68,7 @@ export default class App extends Component {
 
   addLocation(newLocation) {
     this.setState({ location: newLocation }, this.updateLocalStorage)
+    this.getWeather()
   }
 
   updateLocalStorage() {
@@ -87,8 +91,13 @@ export default class App extends Component {
 
   render() {
     const { location } = this.state;
+    const { data } = this.state;
+    if (data.response) {
+      const oldLocale = data.current_observation.display_location.full
+    }
 
-    if (location) {
+    debugger;
+    if (location && data.response && location !== oldLocale) {
       return (
         <div className="App">
           <Header location={ location } addLocation={this.addLocation}/>

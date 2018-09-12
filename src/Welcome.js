@@ -18,10 +18,9 @@ export default class Welcome extends Component {
 
     if (!zipRegEx.test(location) && !cityStRegEx.test(location)) {
       alert('Please enter your location in either of the following formats:\n five-digit zip code (ex: 80203) or City, Two-Letter State Abbreviation (ex: Denver, CO)')
-    } else {
-      const locale = { location };
 
-      this.props.addLocation(locale)
+    } else {
+      this.props.addLocation(location)
       this.setState({ location: '' })
     }
   }
