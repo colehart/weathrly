@@ -1,0 +1,45 @@
+/*Seven Hour AND Ten Day Card*/
+.weather-card {
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: 'Syncopate', sans-serif;
+  height: auto;
+  width: 12em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.weather-icon {
+
+}
+
+
+/*Seven Hour Card*/
+.upcoming-hour-7 {
+  font-size: 1em;
+}
+
+.weather-icon-7 {
+  height: 3em;
+}
+
+.hourly-temp-7 {
+  font-size: 1em;
+}
+
+
+/*Ten Day Card*/
+.upcoming-day {
+
+}
+
+.weather-icon-10 {
+
+}
+
+.projected-temp-10 {
+
+}

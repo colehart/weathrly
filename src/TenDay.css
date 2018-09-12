@@ -1,0 +1,11 @@
+.ten-day {
+  grid-row: 3/4;
+  grid-column: 1/end;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 25px auto;
+}
+
+.ten-day-title {
+  font-family: 'Syncopate', sans-serif;
+}

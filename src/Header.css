@@ -5,19 +5,24 @@
   height: 160px;
   padding: 20px;
   text-align: center;
+  grid-row: 1/2;
+  grid-column: auto;
+  width: 100vw;
 }
 
 .app-title {
-  -webkit-text-stroke: 0.5px #3A6F7B;
-  font-size: 3em;
+  color: #024856;
+  font-size: 3rem;
   font-family: 'Lobster', cursive;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   margin-top: 10px;
 }
 
 .app-intro {
-  font-family: 'Syncopate', sans-serif;
-  font-size: 1em;
+  color: #024856;
+  font-family: 'Mitr', sans-serif;
+  font-size: 1.25rem;
+  margin: 10px auto 5px;
 }
 
 .header-form input {
@@ -27,12 +32,13 @@
 }
 
 .header-form button {
-  font-size: .75em;
+  font-size: 1rem;
   margin-left: 10px;
   width: 20%;
 }
 
 .header-form ::placeholder {
-  font-size: 1em;
+  font-size: 1rem;
   text-align: left;
 }
+
