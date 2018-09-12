@@ -98,8 +98,8 @@ export default class CurrentWeather extends Component {
             <img className="weather-icon" src={imgPath} alt="weather icon" />
           </article>
           <article className="hi-lo-display">
-            <p aria-label="Daily high temperature">High: {this.state.todayHighF}&deg; F /<span> {this.state.todayHighC}&deg; C</span></p>
-            <p aria-label="Daily low temperature">Low: {this.state.todayLowF}&deg; F /<span> {this.state.todayLowC}&deg; C</span></p>
+            <p className="daily-hi-lo" aria-label="Daily high temperature">High: {this.state.todayHighF}&deg; F /<span> {this.state.todayHighC}&deg; C</span></p>
+            <p className="daily-hi-lo" aria-label="Daily low temperature">Low: {this.state.todayLowF}&deg; F /<span> {this.state.todayLowC}&deg; C</span></p>
           </article>
         </div>
         <p className="summary-display" aria-label="Summary of current weather">{this.state.todaySummary}</p>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import './TenDay.css';
 import WeatherCard from './WeatherCard';
 
 export default class TenDay extends Component {
@@ -27,7 +28,7 @@ export default class TenDay extends Component {
   render() {
     return (
       <section className="ten-day">
-        <h1 aria-label="Ten Day Forecast title">Ten Day Forecast</h1>
+        <h1 className="ten-day-title" aria-label="Ten Day Forecast title">Ten Day Forecast</h1>
         <div className="ten-day-container" aria-label="Ten Day Weather Card">
           {
             this.state.data.map((day, index) => {

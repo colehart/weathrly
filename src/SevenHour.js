@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import './SevenHour.css'
 import WeatherCard from './WeatherCard';
 
 export default class SevenHour extends Component {
@@ -26,7 +27,7 @@ export default class SevenHour extends Component {
   render() {
     return (
       <section className="seven-hour">
-        <h1 aria-label="Seven Hour Forecast title">Seven Hour Forecast</h1>
+        <h1 className="seven-hour-title" aria-label="Seven Hour Forecast title">Seven Hour Forecast</h1>
         <div className="seven-hour-container" aria-label="Seven Hour Weather Card">
           {
             this.state.data.map((hour, index) => {

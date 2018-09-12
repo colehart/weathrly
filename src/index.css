@@ -4,40 +4,13 @@ body {
   padding: 0;
 }
 
+#root {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 1fr 3fr 2fr;
+}
+
 .weather-icon {
   height: 100px;
 }
 
-input {
-  height: 1.5rem;
-}
-
-::placeholder {
-  color: gray;
-  font-size: 0.75rem;
-  font-family: 'Syncopate', sans-serif;
-}
-
-button {
-  background-color: transparent;
-  border: 3px solid white;
-  border-radius: 4px;
-  color: white;
-  font-size: 0.75rem;
-  font-family: 'Syncopate', sans-serif;
-  height: 2rem;
-  text-align: center;
-}
-
-button:hover {
-  background-color: white;
-  color: #74b8df;
-  font-weight: bold;
-}
-
-button:disabled {
-  background-color: transparent;
-  border: 3px solid white;
-  color: white;
-  font-weight: normal;
-}
