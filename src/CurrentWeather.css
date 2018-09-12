@@ -1,0 +1,63 @@
+.current-city-title,
+.current-temp-display,
+.fahr-display,
+.current-condition,
+.display-wrapper,
+.summary-display {
+  font-family: 'Syncopate', sans-serif;
+}
+
+
+.current-city-title {
+  color: #3A6F7B;
+  font-size: 1.5em;
+  margin-left: 1em;
+}
+
+.current-temp-display {
+  color: #3A6F7B;
+  font-size: 1em;
+  margin-bottom: 0;
+}
+
+.fahr-display {
+  -webkit-text-stroke: 6px #3A6F7B;
+  color: #00E1D0;
+  font-size: 20em;
+  margin-left: 20px;
+}
+
+.last-updated {
+  margin-left: 11em;
+}
+
+.current-condition {
+  color: #3A6F7B;
+  margin-right: 20px;
+}
+
+.display-wrapper {
+  color: #3A6F7B;
+  display: flex;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  width: 35%;
+  margin-left: 25px;
+  margin-right: 40px;
+}
+
+.hi-lo-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-display {
+  margin-left: 25px;
+  color: #3A6F7B;
+}
+

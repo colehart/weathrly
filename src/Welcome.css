@@ -1,6 +1,6 @@
 .welcome-container {
-  background-color: #f87ef3;
-  background-image: linear-gradient(to bottom left, #f87ef3, #00e1d0);
+  background-color: #F87EF3;
+  background-image: linear-gradient(to bottom left, #F87EF3, #00E1D0);
   color: white;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
   font-family: 'Syncopate', sans-serif;
 }
 
-.welcome-form{
+.welcome-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,6 +32,8 @@
 }
 
 .welcome-form input {
+  font-size: 1em;
+  font-family: 'Syncopate', sans-serif;
   height: 2rem;
   margin: 1em;
   padding-left: 10px;
