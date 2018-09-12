@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './CurrentWeather.css'
+
 export default class CurrentWeather extends Component {
   constructor(props) {
     super();
@@ -87,14 +89,20 @@ export default class CurrentWeather extends Component {
 
     return (
       <section className="current-weather">
-        <h1 aria-label="Current city">Current Conditions in {this.state.currentLocation}</h1>
-        <p aria-label="Today">{this.state.today}</p>
-        <h2 aria-label="Current weather condition">{this.state.currentCondition}</h2>
-        <img className="weather-icon" src={imgPath} alt="weather icon" />
-        <p aria-label="Current temperature in fahrenheit and celsius">{this.state.currentTempF}&deg; F /<span> {this.state.currentTempC}&deg; C</span></p>
-        <p aria-label="Daily high temperature">Todays High: {this.state.todayHighF}&deg; F /<span> {this.state.todayHighC}&deg; C</span></p>
-        <p aria-label="Daily low temperature">Todays Low: {this.state.todayLowF}&deg; F /<span> {this.state.todayLowC}&deg; C</span></p>
-        <p aria-label="Summary of current weather">{this.state.todaySummary}</p>
+        <h1 className="current-city-title" aria-label="Current city">Current Conditions in {this.state.currentLocation}</h1>
+        <p className="last-updated" aria-label="Today">{this.state.today}</p>
+        <p className="current-temp-display" aria-label="Current temperature in fahrenheit and celsius"><span className="fahr-display">{this.state.currentTempF}&deg;</span> F / {this.state.currentTempC}&deg; C</p>
+        <div className="display-wrapper">
+          <article className="icon-container">
+            <h2 className="current-condition" aria-label="Current weather condition">{this.state.currentCondition}</h2>
+            <img className="weather-icon" src={imgPath} alt="weather icon" />
+          </article>
+          <article className="hi-lo-display">
+            <p aria-label="Daily high temperature">High: {this.state.todayHighF}&deg; F /<span> {this.state.todayHighC}&deg; C</span></p>
+            <p aria-label="Daily low temperature">Low: {this.state.todayLowF}&deg; F /<span> {this.state.todayLowC}&deg; C</span></p>
+          </article>
+        </div>
+        <p className="summary-display" aria-label="Summary of current weather">{this.state.todaySummary}</p>
       </section>
     )
   }

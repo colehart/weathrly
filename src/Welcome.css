@@ -1,31 +1,41 @@
 .welcome-container {
-  background-color: #f87ef3;
-  background-image: linear-gradient(to bottom left, #f87ef3, #00e1d0);
-  height: 100vh;
+  background-color: #F87EF3;
+  background-image: linear-gradient(to bottom left, #F87EF3, #00E1D0);
+  color: white;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   justify-content: center;
   padding: 20px;
-  color: white;
 }
 
 .welcome-title {
-  font-size: 1.5em;
+  -webkit-text-stroke: 2px #3A6F7B;
+  color: #FFF;
+  font-size: 8em;
+  font-family: 'Lobster', cursive;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .welcome-intro {
-  font-size: large;
+  font-size: 1em;
+  font-family: 'Syncopate', sans-serif;
 }
 
-.welcome-form{
-  width: 50%;
-  margin: 0 auto;
+.welcome-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .welcome-form input {
+  font-size: 1em;
+  font-family: 'Syncopate', sans-serif;
+  height: 2rem;
+  margin: 1em;
   padding-left: 10px;
 }
 

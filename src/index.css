@@ -1,7 +1,7 @@
 body {
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
 
 .weather-icon {
@@ -15,16 +15,18 @@ input {
 ::placeholder {
   color: gray;
   font-size: 0.75rem;
+  font-family: 'Syncopate', sans-serif;
 }
 
 button {
-  height: 2rem;
-  color: white;
   background-color: transparent;
   border: 3px solid white;
-  text-align: center;
-  font-size: 0.75rem;
   border-radius: 4px;
+  color: white;
+  font-size: 0.75rem;
+  font-family: 'Syncopate', sans-serif;
+  height: 2rem;
+  text-align: center;
 }
 
 button:hover {
@@ -34,8 +36,8 @@ button:hover {
 }
 
 button:disabled {
-  color: white;
   background-color: transparent;
   border: 3px solid white;
+  color: white;
   font-weight: normal;
 }
