@@ -1,48 +1,81 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import data from './mockData';
+// import newData from './mockData';
+import apiKey from './assets/Key';
 import Welcome from './Welcome';
 import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
+let newData;
 
-class App extends Component {
-  constructor() {
-    super();
+export default class App extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
-      data: data || {},
+      data: newData || {},
       location: ''
     }
 
+    this.getWeather = this.getWeather.bind(this);
     this.addLocation = this.addLocation.bind(this);
   }
 
-  // getWeather = () => {
-  //   this.setState({});
-  // };
+  formatFetch() {
+    const fetchLocation = this.state.location;
+
+    if (parseInt(fetchLocation, 10)) {
+      return `http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/${fetchLocation}.json`
+    } else {
+      const splitLocation = fetchLocation.split(', ')
+
+      return `http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/${splitLocation[1]}/${splitLocation[0]}.json`
+    }
+  }
+
+  getWeather() {
+    if (this.state.location) {
+      const fetchPath = this.formatFetch();
+
+      fetch(`${fetchPath}`)
+        .then(response => response.json())
+        .then(newData => {
+          this.setState({
+            data: newData
+          })
+        })
+        .catch(error => {
+          debugger;
+          // need to catch and alert user
+          throw new Error(error);
+        })
+    }
+  };
 
   componentDidMount() {
     this.getFromLocalStorage();
-    // this.getWeather();
   }
 
   getFromLocalStorage() {
-    const location = localStorage.getItem('location')
+    const storedLocation = JSON.parse(localStorage.getItem('location'))
 
-    if (location) {
-      this.setState({ location: JSON.parse(location).location })
+    if (storedLocation) {
+      this.setState({ location: storedLocation }, this.getWeather)
     }
   }
 
   addLocation(newLocation) {
-    this.setState({ location: newLocation }, this.updateLocalStorage)
+    if (newLocation !== this.state.location) {
+      this.setState({ location: newLocation }, this.updateLocalStorage)
+    }
   }
 
   updateLocalStorage() {
     localStorage.setItem('location', JSON.stringify(this.state.location))
+    this.getWeather()
+    // handleChange to render new location weather data
   }
 
   setCurrentWeatherData() {
@@ -61,8 +94,10 @@ class App extends Component {
 
   render() {
     const { location } = this.state;
+    const { data } = this.state;
+    // handleChange in location
 
-    if (location) {
+    if (location && data.response) {
       return (
         <div className="App">
           <Header location={ location } addLocation={this.addLocation}/>
@@ -80,5 +115,3 @@ class App extends Component {
     }
   }
 }
-
-export default App;
