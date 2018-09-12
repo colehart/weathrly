@@ -31,7 +31,7 @@ export default class Welcome extends Component {
 
     return (
       <div className="welcome-container">
-        <h1 className="welcome-title" aria-label="Application title">Welcome to Weathrly</h1>
+        <h1 className="welcome-title" aria-label="Application title">Weathrly</h1>
         <p className="welcome-intro" aria-label="App description">Please enter your city and state or five-digit zip code to get started.</p>
         <section className="welcome-form">
           <input
