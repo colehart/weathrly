@@ -11,7 +11,7 @@ export default function Header(props) {
       <h1 className="app-title" aria-label="Application title">Weathrly</h1>
       <p className="app-intro" aria-label="App description">Please enter a new city and state or five-digit zip code to change your location.</p>
       <section className="header-form">
-        <Search location={ location } addLocation={props.addLocation} />
+        <Search location={ location } addLocation={ props.addLocation } />
       </section>
     </header>
   )
