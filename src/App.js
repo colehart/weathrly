@@ -22,15 +22,15 @@ export default class App extends Component {
     this.addLocation = this.addLocation.bind(this);
   }
 
-  formatFetch() {
-    const fetchLocation = this.state.location;
+  componentDidMount() {
+    this.getFromLocalStorage();
+  }
 
-    if (parseInt(fetchLocation, 10)) {
-      return `http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/${fetchLocation}.json`
-    } else {
-      const splitLocation = fetchLocation.split(', ')
+  getFromLocalStorage() {
+    const storedLocation = JSON.parse(localStorage.getItem('location'))
 
-      return `http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/${splitLocation[1]}/${splitLocation[0]}.json`
+    if (storedLocation) {
+      this.setState({ location: storedLocation }, this.getWeather)
     }
   }
 
@@ -51,17 +51,17 @@ export default class App extends Component {
           throw new Error(error);
         })
     }
-  };
-
-  componentDidMount() {
-    this.getFromLocalStorage();
   }
 
-  getFromLocalStorage() {
-    const storedLocation = JSON.parse(localStorage.getItem('location'))
+  formatFetch() {
+    const fetchLocation = this.state.location;
 
-    if (storedLocation) {
-      this.setState({ location: storedLocation }, this.getWeather)
+    if (parseInt(fetchLocation, 10)) {
+      return `http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/${fetchLocation}.json`
+    } else {
+      const splitLocation = fetchLocation.split(', ')
+
+      return `http://api.wunderground.com/api/${apiKey}/conditions/hourly/forecast10day/q/${splitLocation[1]}/${splitLocation[0]}.json`
     }
   }
 
@@ -74,15 +74,6 @@ export default class App extends Component {
   updateLocalStorage() {
     localStorage.setItem('location', JSON.stringify(this.state.location))
     this.getWeather()
-    // handleChange to render new location weather data
-  }
-
-  setHourlyData() {
-    return this.state.data.hourly_forecast.slice(0, 7);
-  }
-
-  setForecastData() {
-    return this.state.data.forecast.simpleforecast.forecastday;
   }
 
   render() {
