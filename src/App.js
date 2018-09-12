@@ -48,6 +48,7 @@ export default class App extends Component {
         })
         .catch(error => {
           debugger;
+          // need to catch and alert user
           throw new Error(error);
         })
     }
@@ -66,13 +67,15 @@ export default class App extends Component {
   }
 
   addLocation(newLocation) {
-    this.setState({ location: newLocation }, this.updateLocalStorage)
+    if (newLocation !== this.state.location) {
+      this.setState({ location: newLocation }, this.updateLocalStorage)
+    }
   }
 
   updateLocalStorage() {
     localStorage.setItem('location', JSON.stringify(this.state.location))
-    debugger;
     this.getWeather()
+    // handleChange to render new location weather data
   }
 
   setCurrentWeatherData() {
@@ -92,10 +95,7 @@ export default class App extends Component {
   render() {
     const { location } = this.state;
     const { data } = this.state;
-    let oldLocale;
-    if (data.response) {
-      oldLocale = data.current_observation.display_location.full
-    }
+    // handleChange in location
 
     if (location && data.response) {
       return (
