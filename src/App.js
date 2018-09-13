@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-// import newData from './mockData';
+import newData from './mockData';
 import apiKey from './assets/Key';
 import Welcome from './Welcome';
 import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
-let newData;
+// let newData;
 
 export default class App extends Component {
   constructor(props) {
@@ -61,9 +61,9 @@ export default class App extends Component {
   getFromLocalStorage() {
     const storedLocation = JSON.parse(localStorage.getItem('location'))
 
-    if (storedLocation) {
-      this.setState({ location: storedLocation }, this.getWeather)
-    }
+    // if (storedLocation) {
+    //   this.setState({ location: storedLocation }, this.getWeather)
+    // }
   }
 
   addLocation(newLocation) {
@@ -74,7 +74,7 @@ export default class App extends Component {
 
   updateLocalStorage() {
     localStorage.setItem('location', JSON.stringify(this.state.location))
-    this.getWeather()
+    // this.getWeather()
     // handleChange to render new location weather data
   }
 
@@ -99,7 +99,7 @@ export default class App extends Component {
 
     if (location && data.response) {
       return (
-        <div className="App">
+        <div className="app">
           <Header location={ location } addLocation={this.addLocation}/>
           <CurrentWeather data={this.setCurrentWeatherData()} />
           <SevenHour data={this.setHourlyData()} />
@@ -108,7 +108,7 @@ export default class App extends Component {
       )
     } else {
       return (
-        <div className="Welcome">
+        <div className="welcome">
           <Welcome location={ location } addLocation={this.addLocation}/>
         </div>
       )
