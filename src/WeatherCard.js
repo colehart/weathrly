@@ -33,7 +33,7 @@ export default class WeatherCard extends Component {
 
     } else {
       return (
-        <section className="weather-card">
+        <section className="weather-card weather-card-10">
           <h2 className="upcoming-day" aria-label="Upcoming day of forecast">{this.state.weekday}</h2>
           <img className="weather-icon weather-icon-10" src={imgPath} alt="weather icon"/>
           <h3 className="projected-temp-10" aria-label="Projected daily high temperature"><span className="card-high-low">High:</span> {this.state.highTempF}&deg; F / {this.state.highTempC}&deg; C</h3>

@@ -3,10 +3,11 @@
 // $body-font: 'Mitr', sans-serif;
 // $heading-font: 'Lobster', cursive;
 
-.Welcome {
+.welcome {
   height: 100vh;
   text-align: center;
   width: 100vw;
+  overflow: hidden;
 }
 
 .welcome-container {

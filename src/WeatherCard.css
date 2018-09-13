@@ -1,15 +1,16 @@
 /*Seven Hour AND Ten Day Card*/
 .weather-card {
-  border: 2px solid black;
+  border: 2px solid #024856;
   border-radius: 10px;
-  font-family: 'Syncopate', sans-serif;
-  height: auto;
-  width: 12em;
+  font-family: 'Mitr', sans-serif;
+  height: 6.5em;
+  width: 15em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  font-weight: 400;
 }
 
 .weather-icon {
@@ -20,6 +21,9 @@
 /*Seven Hour Card*/
 .upcoming-hour-7 {
   font-size: 1em;
+  font-weight: 400;
+  margin: 5px auto;
+  color: #024856;
 }
 
 .weather-icon-7 {
@@ -28,18 +32,31 @@
 
 .hourly-temp-7 {
   font-size: 1em;
+  margin: 5px auto;
+  font-weight: 400;
+  color: #024856;
 }
 
 
 /*Ten Day Card*/
-.upcoming-day {
+.weather-card-10 {
+  height: 10em;
+}
 
+.upcoming-day {
+  font-size: 1em;
+  font-weight: 400;
+  margin: 5px auto;
+  color: #024856;
 }
 
 .weather-icon-10 {
-
+  height: 3em;
 }
 
 .projected-temp-10 {
-
+  font-size: 1em;
+  margin: 0 auto;
+  font-weight: 400;
+  color: #024856;
 }

@@ -3,7 +3,9 @@
   grid-column: 1/2;
   text-align: center;
   width: 40rem;
+  height: 35rem;
   border: 1px dotted blue;
+  margin-left: 5em;
 }
 
 .current-city-title,
@@ -32,7 +34,7 @@
 .fahr-display {
   -webkit-text-stroke: 6px #024856;
   color: #00E1D0;
-  font-size: 20rem;
+  font-size: 15rem;
   margin-left: 20px;
 }
 
