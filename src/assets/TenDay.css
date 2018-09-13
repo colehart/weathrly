@@ -1,24 +1,26 @@
 .ten-day {
-  grid-row: 3/4;
+  grid-row: 4/5;
   grid-column: 1/end;
-  width: 75rem;
-  height: 60rem;
+  width: 85rem;
+  height: 30rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center; 
-  border: 1px dotted blue;
+  margin: auto;
 }
 
 .ten-day-title {
   font-family: 'Mitr', sans-serif;
   color: #024856;
   font-weight: 500;
+  font-size: 2em;
 }
 
 .ten-day-container {
   display: grid;
-  grid-template-columns: (repeat 10 , 1fr);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
+  grid-column-gap: 10px;
 }

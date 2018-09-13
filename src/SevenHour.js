@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './SevenHour.css'
+import './assets/SevenHour.css'
 import WeatherCard from './WeatherCard';
 
 export default function SevenHour(props) {

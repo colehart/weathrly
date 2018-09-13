@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './TenDay.css';
+import './assets/TenDay.css';
 import WeatherCard from './WeatherCard';
 
 export default function TenDay(props) {

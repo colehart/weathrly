@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Search from './Search'
-import './Header.css'
+import './assets/Header.css'
 
 export default function Header(props) {
   const { location } = props;
