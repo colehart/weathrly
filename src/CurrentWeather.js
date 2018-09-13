@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './CurrentWeather.css'
+import './assets/CurrentWeather.css'
 
 export default function CurrentWeather(props) {
   const imgPath = require(`./assets/images/${props.weatherIcon}.svg`)

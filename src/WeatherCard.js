@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './WeatherCard.css';
+import './assets/WeatherCard.css';
 
 export default function WeatherCard(props) {
   const imgPath = require(`./assets/images/${props.weatherIcon}.svg`)
@@ -16,7 +16,7 @@ export default function WeatherCard(props) {
 
   } else {
     return (
-      <section className="weather-card">
+      <section className="weather-card weather-card-10">
         <h2 className="upcoming-day" aria-label="Upcoming day of forecast">{props.weekday}</h2>
         <img className="weather-icon weather-icon-10" src={imgPath} alt="weather icon"/>
         <h3 className="projected-temp-10" aria-label="Projected daily high temperature"><span className="card-high-low">High:</span> {props.highTempF}&deg; F / {props.highTempC}&deg; C</h3>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './assets/App.css';
 
 // import newData from './mockData';
 import apiKey from './assets/Key';
