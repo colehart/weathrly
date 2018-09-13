@@ -8,15 +8,16 @@ import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
-let newData;
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: newData || {},
-      location: ''
+      location: '',
+      hourlyForecast: [],
+      tenDay: [],
+      currentObservation: {}
     }
 
     this.addLocation = this.addLocation.bind(this);
@@ -42,7 +43,10 @@ export default class App extends Component {
         .then(response => response.json())
         .then(newData => {
           this.setState({
-            data: newData
+            hourlyForecast: newData.hourly_forecast,
+            tenDay: newData.forecast.simpleforecast.forecastday,
+            currentObservation: newData.current_observation,
+            forecastInfo: newData.forecast
           })
         })
         .catch(error => {
@@ -78,25 +82,36 @@ export default class App extends Component {
 
   render() {
     const { location } = this.state;
-    const { data } = this.state;
+    const { hourlyForecast } = this.state;
+    const { tenDay } = this.state;
+    const { currentObservation } = this.state;
 
-    if (location && data.response) {
+    if (location.length && hourlyForecast.length && tenDay.length && Object.keys(currentObservation).length) {
       return (
         <div className="app">
           <Header location={ location } addLocation={ this.addLocation }/>
-          <CurrentWeather currentLocation={ this.state.data.current_observation.display_location.full }
-            currentCondition={ this.state.data.current_observation.weather }
-            today={ this.state.data.current_observation.observation_time }
-            weatherIcon={ this.state.data.current_observation.icon }
-            currentTempF={ this.state.data.current_observation.temp_f }
-            currentTempC={ this.state.data.current_observation.temp_c }
-            todayHighF={ this.state.data.forecast.simpleforecast.forecastday[0].high.fahrenheit }
-            todayHighC={ this.state.data.forecast.simpleforecast.forecastday[0].high.celsius }
-            todayLowF={ this.state.data.forecast.simpleforecast.forecastday[0].low.fahrenheit }
-            todayLowC={ this.state.data.forecast.simpleforecast.forecastday[0].low.celsius }
-            todaySummary={ this.state.data.forecast.txt_forecast.forecastday[0].fcttext } />
-          <SevenHour data={ this.state.data.hourly_forecast.slice(0, 7) } />
-          <TenDay data={ this.state.data.forecast.simpleforecast.forecastday } />
+          <CurrentWeather currentLocation={ this.state.currentObservation.display_location.full }
+            currentCondition={ this.state.currentObservation.weather }
+            today={ this.state.currentObservation.observation_time }
+            weatherIcon={ this.state.currentObservation.icon }
+            currentTempF={ this.state.currentObservation.temp_f }
+            currentTempC={ this.state.currentObservation.temp_c }
+            todayHighF={ this.state.forecastInfo.simpleforecast.forecastday[0].high.fahrenheit }
+            todayHighC={ this.state.forecastInfo.simpleforecast.forecastday[0].high.celsius }
+            todayLowF={ this.state.forecastInfo.simpleforecast.forecastday[0].low.fahrenheit }
+            todayLowC={ this.state.forecastInfo.simpleforecast.forecastday[0].low.celsius }
+            todaySummary={ this.state.forecastInfo.txt_forecast.forecastday[0].fcttext } />
+          {/* <SevenHour data={ this.state.hourlyForecast } />
+          <TenDay data={ this.state.tenDay } /> */}
+          <SevenHour hour1={ this.state.hourlyForecast[0] }
+                    hour2={ this.state.hourlyForecast[1] }
+                    hour3={ this.state.hourlyForecast[2] }
+                    hour4={ this.state.hourlyForecast[3] }
+                    hour5={ this.state.hourlyForecast[4] }
+                    hour6={ this.state.hourlyForecast[5] }
+                    hour7={ this.state.hourlyForecast[6] }
+          />
+          <TenDay data={ this.state.tenDay } />
         </div>
       )
     } else {
