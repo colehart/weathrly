@@ -30,6 +30,7 @@ export default class WeatherCard extends Component {
           <h2 className="hourly-temp-7" aria-label="Projected hourly temperature">{this.state.projectedHrTempF}&deg; F / {this.state.projectedHrTempC}&deg; C</h2>
         </section>
       )
+
     } else {
       return (
         <section className="weather-card">

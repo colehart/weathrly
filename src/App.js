@@ -82,27 +82,27 @@ export default class App extends Component {
 
     if (location && data.response) {
       return (
-        <div className="App">
-          <Header location={ location } addLocation={this.addLocation}/>
-          <CurrentWeather currentLocation={this.state.data.current_observation.display_location.full}
-            currentCondition={this.state.data.current_observation.weather}
-            today={this.state.data.current_observation.observation_time}
-            weatherIcon={this.state.data.current_observation.icon}
-            currentTempF={this.state.data.current_observation.temp_f}
-            currentTempC={this.state.data.current_observation.temp_c}
-            todayHighF={this.state.data.forecast.simpleforecast.forecastday[0].high.fahrenheit}
-            todayHighC={this.state.data.forecast.simpleforecast.forecastday[0].high.celsius}
-            todayLowF={this.state.data.forecast.simpleforecast.forecastday[0].low.fahrenheit}
-            todayLowC={this.state.data.forecast.simpleforecast.forecastday[0].low.celsius}
-            todaySummary={this.state.data.forecast.txt_forecast.forecastday[0].fcttext} />
-          <SevenHour data={this.state.data.hourly_forecast.slice(0, 7)} />
-          <TenDay data={this.state.data.forecast.simpleforecast.forecastday} />
+        <div className="app">
+          <Header location={ location } addLocation={ this.addLocation }/>
+          <CurrentWeather currentLocation={ this.state.data.current_observation.display_location.full }
+            currentCondition={ this.state.data.current_observation.weather }
+            today={ this.state.data.current_observation.observation_time }
+            weatherIcon={ this.state.data.current_observation.icon }
+            currentTempF={ this.state.data.current_observation.temp_f }
+            currentTempC={ this.state.data.current_observation.temp_c }
+            todayHighF={ this.state.data.forecast.simpleforecast.forecastday[0].high.fahrenheit }
+            todayHighC={ this.state.data.forecast.simpleforecast.forecastday[0].high.celsius }
+            todayLowF={ this.state.data.forecast.simpleforecast.forecastday[0].low.fahrenheit }
+            todayLowC={ this.state.data.forecast.simpleforecast.forecastday[0].low.celsius }
+            todaySummary={ this.state.data.forecast.txt_forecast.forecastday[0].fcttext } />
+          <SevenHour data={ this.state.data.hourly_forecast.slice(0, 7) } />
+          <TenDay data={ this.state.data.forecast.simpleforecast.forecastday } />
         </div>
       )
     } else {
       return (
-        <div className="Welcome">
-          <Welcome location={ location } addLocation={this.addLocation}/>
+        <div className="welcome">
+          <Welcome location={ location } addLocation={ this.addLocation }/>
         </div>
       )
     }
