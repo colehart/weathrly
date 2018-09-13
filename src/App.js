@@ -43,7 +43,7 @@ export default class App extends Component {
         .then(response => response.json())
         .then(newData => {
           this.setState({
-            hourlyForecast: newData.hourly_forecast,
+            hourlyForecast: newData.hourly_forecast.slice(0 ,7),
             tenDay: newData.forecast.simpleforecast.forecastday,
             currentObservation: newData.current_observation,
             forecastInfo: newData.forecast
@@ -100,17 +100,8 @@ export default class App extends Component {
             todayLowF={ this.state.forecastInfo.simpleforecast.forecastday[0].low.fahrenheit }
             todayLowC={ this.state.forecastInfo.simpleforecast.forecastday[0].low.celsius }
             todaySummary={ this.state.forecastInfo.txt_forecast.forecastday[0].fcttext } />
-          {/* <SevenHour data={ this.state.hourlyForecast } />
-          <TenDay data={ this.state.tenDay } /> */}
-          <SevenHour hour1={ this.state.hourlyForecast[0] }
-                    hour2={ this.state.hourlyForecast[1] }
-                    hour3={ this.state.hourlyForecast[2] }
-                    hour4={ this.state.hourlyForecast[3] }
-                    hour5={ this.state.hourlyForecast[4] }
-                    hour6={ this.state.hourlyForecast[5] }
-                    hour7={ this.state.hourlyForecast[6] }
-          />
-          <TenDay data={ this.state.tenDay } />
+          <SevenHour hours={ this.state.hourlyForecast } />
+          <TenDay days={ this.state.tenDay } />
         </div>
       )
     } else {

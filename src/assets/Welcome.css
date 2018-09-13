@@ -1,66 +1,42 @@
-// $dark-teal: #024856;
-// $white: #FFF;
-// $body-font: 'Mitr', sans-serif;
-// $heading-font: 'Lobster', cursive;
-
-.welcome {
-  height: 100vh;
-  text-align: center;
-  width: 100vw;
-  overflow: hidden;
-}
-
-.welcome-container {
-  background-color: #F87EF3;
-  background-image: linear-gradient(to bottom left, #F87EF3, #00E1D0);
-  color: #024856;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-  padding: 20px;
+.app {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 12em 35em 15em 35em;
   width: 100vw;
 }
 
-.welcome-title {
-  color: #024856;
-  font-size: 8em;
-  font-family: 'Lobster', cursive;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  text-align: center;
+input {
+  height: 1.5rem;
 }
 
-.welcome-intro {
-  font-size: 1.5em;
+::placeholder {
+  color: lightgray;
+  font-size: 0.75rem;
   font-family: 'Mitr', sans-serif;
-  text-align: center;
 }
 
-.welcome-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  width: 50%;
-}
-
-.welcome-form input {
-  font-size: 1.25rem;
+button {
+  background-color: transparent;
+  border: 3px solid #024856;
+  border-radius: 4px;
+  color: #024856;
+  font-size: 1.5rem;
   font-family: 'Mitr', sans-serif;
   height: 2.5rem;
-  margin: 1em;
-  padding-left: 10px;
-}
-
-.welcome-form button {
-  margin: 10px auto;
-  width: 50%;
-  height: 2em;
-}
-
-.welcome-form ::placeholder {
   text-align: center;
-  font-family: 'Mitr', sans-serif;
-  font-size: 1.25rem;
+}
+
+button:hover {
+  background-color: #024856;
+  color: #74B8DF;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+button:disabled {
+  background-color: transparent;
+  border: 3px solid #024856;
+  color: #024856;
+  font-weight: normal;
+  font-size: 1.5rem;
 }
