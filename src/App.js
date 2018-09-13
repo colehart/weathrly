@@ -8,19 +8,53 @@ import Header from './Header';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
-// let newData;
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: newData || {},
-      location: ''
+      location: '',
+      hourlyForecast: [],
+      tenDay: [],
+      currentObservation: {}
     }
 
-    this.getWeather = this.getWeather.bind(this);
     this.addLocation = this.addLocation.bind(this);
+  }
+
+  componentDidMount() {
+    this.getFromLocalStorage();
+  }
+
+  getFromLocalStorage() {
+    const storedLocation = JSON.parse(localStorage.getItem('location'))
+
+    if (storedLocation) {
+      this.setState({ location: storedLocation }, this.getWeather)
+    }
+  }
+
+  getWeather() {
+    if (this.state.location) {
+      const fetchPath = this.formatFetch();
+
+      fetch(`${fetchPath}`)
+        .then(response => response.json())
+        .then(newData => {
+          this.setState({
+            hourlyForecast: newData.hourly_forecast,
+            tenDay: newData.forecast.simpleforecast.forecastday,
+            currentObservation: newData.current_observation,
+            forecastInfo: newData.forecast
+          })
+        })
+        .catch(error => {
+          debugger;
+          // need to catch and alert user
+          throw new Error(error);
+        })
+    }
   }
 
   formatFetch() {
@@ -35,37 +69,6 @@ export default class App extends Component {
     }
   }
 
-  getWeather() {
-    if (this.state.location) {
-      const fetchPath = this.formatFetch();
-
-      fetch(`${fetchPath}`)
-        .then(response => response.json())
-        .then(newData => {
-          this.setState({
-            data: newData
-          })
-        })
-        .catch(error => {
-          debugger;
-          // need to catch and alert user
-          throw new Error(error);
-        })
-    }
-  };
-
-  componentDidMount() {
-    this.getFromLocalStorage();
-  }
-
-  getFromLocalStorage() {
-    const storedLocation = JSON.parse(localStorage.getItem('location'))
-
-    // if (storedLocation) {
-    //   this.setState({ location: storedLocation }, this.getWeather)
-    // }
-  }
-
   addLocation(newLocation) {
     if (newLocation !== this.state.location) {
       this.setState({ location: newLocation }, this.updateLocalStorage)
@@ -74,42 +77,46 @@ export default class App extends Component {
 
   updateLocalStorage() {
     localStorage.setItem('location', JSON.stringify(this.state.location))
-    // this.getWeather()
-    // handleChange to render new location weather data
-  }
-
-  setCurrentWeatherData() {
-    const currWeather = { current_observation: this.state.data.current_observation,
-                          forecast: this.state.data.forecast};
-    return currWeather;
-  }
-
-  setHourlyData() {
-    return this.state.data.hourly_forecast.slice(0, 7);
-  }
-
-  setForecastData() {
-    return this.state.data.forecast.simpleforecast.forecastday;
   }
 
   render() {
     const { location } = this.state;
-    const { data } = this.state;
-    // handleChange in location
+    const { hourlyForecast } = this.state;
+    const { tenDay } = this.state;
+    const { currentObservation } = this.state;
 
-    if (location && data.response) {
+    if (location.length && hourlyForecast.length && tenDay.length && Object.keys(currentObservation).length) {
       return (
         <div className="app">
-          <Header location={ location } addLocation={this.addLocation}/>
-          <CurrentWeather data={this.setCurrentWeatherData()} />
-          <SevenHour data={this.setHourlyData()} />
-          <TenDay data={this.setForecastData()} />
+          <Header location={ location } addLocation={ this.addLocation }/>
+          <CurrentWeather currentLocation={ this.state.currentObservation.display_location.full }
+            currentCondition={ this.state.currentObservation.weather }
+            today={ this.state.currentObservation.observation_time }
+            weatherIcon={ this.state.currentObservation.icon }
+            currentTempF={ this.state.currentObservation.temp_f }
+            currentTempC={ this.state.currentObservation.temp_c }
+            todayHighF={ this.state.forecastInfo.simpleforecast.forecastday[0].high.fahrenheit }
+            todayHighC={ this.state.forecastInfo.simpleforecast.forecastday[0].high.celsius }
+            todayLowF={ this.state.forecastInfo.simpleforecast.forecastday[0].low.fahrenheit }
+            todayLowC={ this.state.forecastInfo.simpleforecast.forecastday[0].low.celsius }
+            todaySummary={ this.state.forecastInfo.txt_forecast.forecastday[0].fcttext } />
+          {/* <SevenHour data={ this.state.hourlyForecast } />
+          <TenDay data={ this.state.tenDay } /> */}
+          <SevenHour hour1={ this.state.hourlyForecast[0] }
+                    hour2={ this.state.hourlyForecast[1] }
+                    hour3={ this.state.hourlyForecast[2] }
+                    hour4={ this.state.hourlyForecast[3] }
+                    hour5={ this.state.hourlyForecast[4] }
+                    hour6={ this.state.hourlyForecast[5] }
+                    hour7={ this.state.hourlyForecast[6] }
+          />
+          <TenDay data={ this.state.tenDay } />
         </div>
       )
     } else {
       return (
         <div className="welcome">
-          <Welcome location={ location } addLocation={this.addLocation}/>
+          <Welcome location={ location } addLocation={ this.addLocation }/>
         </div>
       )
     }
