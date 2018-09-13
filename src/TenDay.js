@@ -1,50 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './TenDay.css';
 import WeatherCard from './WeatherCard';
 
-export default class TenDay extends Component {
-  constructor(props) {
-    super();
-
-    this.state = {
-      data: props.data || []
-    }
-  }
-
-  setWeekday(data) {
-    const weekday = `${data.date.weekday}, ${data.date.monthname} ${data.date.day}`
-    return weekday;
-  }
-
-  setWeatherIcon(data) {
-    return data.icon;
-  }
-
-  setProjectedTemp(day, degreeType, hiLow) {
-    return day[hiLow][degreeType];
-  }
-
-  render() {
-    return (
-      <section className="ten-day">
-        <h1 className="ten-day-title" aria-label="Ten Day Forecast title">Ten Day Forecast</h1>
-        <div className="ten-day-container" aria-label="Ten Day Weather Card">
-          {
-            this.state.data.map((day, index) => {
-              return <WeatherCard
-                  weekday={this.setWeekday(day)}
-                  weatherIcon={this.setWeatherIcon(day)}
-                  highTempF={this.setProjectedTemp(day, 'fahrenheit', 'high')}
-                  lowTempF={this.setProjectedTemp(day, 'fahrenheit', 'low')}
-                  highTempC={this.setProjectedTemp(day, 'celsius', 'high')}
-                  lowTempC={this.setProjectedTemp(day, 'celsius', 'low')}
-                  key={index}
-              />
-          })
-        }
-        </div>
-      </section>
-    )
-  }
+export default function TenDay(props) {
+  return (
+    <section className="ten-day">
+      <h1 className="ten-day-title" aria-label="Ten Day Forecast title">Ten Day Forecast</h1>
+      <div className="ten-day-container" aria-label="Ten Day Weather Card">
+        {
+          props.data.map((day, index) => {
+            return <WeatherCard
+                weekday={ `${day.date.weekday}, ${day.date.monthname} ${day.date.day}` }
+                weatherIcon={ day.icon }
+                highTempF={ day.high.fahrenheit }
+                lowTempF={ day.low.fahrenheit }
+                highTempC={ day.high.celsius }
+                lowTempC={ day.low.celsius }
+                key={ index }
+            />
+        })
+      }
+      </div>
+    </section>
+  )
 }

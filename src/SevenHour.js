@@ -1,47 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './SevenHour.css'
 import WeatherCard from './WeatherCard';
 
-export default class SevenHour extends Component {
-  constructor(props) {
-    super();
+export default function SevenHour(props) {
+  const hours = [props.hour1, props.hour2, props.hour3, props.hour4, props.hour5, props.hour6, props.hour7]
 
-    this.state = {
-      data: props.data || []
-    }
-  }
-
-  setWeatherIcon(data) {
-    return data.icon;
-  }
-
-  setHour(data) {
-    return data.FCTTIME.civil;
-  }
-
-  setProjectedHrTemp(data, degreeType) {
-    return data.temp[degreeType];
-  }
-
-  render() {
-    return (
-      <section className="seven-hour">
-        <h1 className="seven-hour-title" aria-label="Seven Hour Forecast title">Seven Hour Forecast</h1>
-        <div className="seven-hour-container" aria-label="Seven Hour Weather Card">
-          {
-            this.state.data.map((hour, index) => {
-              return <WeatherCard
-                        hour={this.setHour(hour)}
-                        weatherIcon={this.setWeatherIcon(hour)}
-                        projectedHrTempF={this.setProjectedHrTemp(hour, 'english')}
-                        projectedHrTempC={this.setProjectedHrTemp(hour, 'metric')}
-                        key={index}
-                      />
-            })
-          }
-        </div>
-      </section>
-    )
-  }
+  return (
+    <section className="seven-hour">
+      <h1 className="seven-hour-title" aria-label="Seven Hour Forecast title">Seven Hour Forecast</h1>
+      <div className="seven-hour-container" aria-label="Seven Hour Weather Card">
+        {
+          hours.slice(0,7).map((hour, index) => {
+            return <WeatherCard
+                      hour={ hour.FCTTIME.civil }
+                      weatherIcon={ hour.icon }
+                      projectedHrTempF={ hour.temp.english }
+                      projectedHrTempC={ hour.temp.metric }
+                      key={ index }
+                    />
+          })
+        }
+      </div>
+    </section>
+  )
 }
