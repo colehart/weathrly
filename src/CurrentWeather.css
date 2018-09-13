@@ -2,8 +2,9 @@
   grid-row: 2/3;
   grid-column: 1/2;
   text-align: center;
-  width: 40rem;
-  border: 1px dotted blue;
+  width: 45rem;
+  height: 35rem;
+  margin: 2em auto;
 }
 
 .current-city-title,
@@ -32,7 +33,7 @@
 .fahr-display {
   -webkit-text-stroke: 6px #024856;
   color: #00E1D0;
-  font-size: 20rem;
+  font-size: 15rem;
   margin-left: 20px;
 }
 
@@ -51,14 +52,13 @@
   display: flex;
   font-size: 1rem;
   font-weight: bold;
+  justify-content: space-around;
 }
 
 .icon-container {
   display: flex;
   align-items: center;
-  width: 50%;
-  margin-left: 25px;
-  margin-right: 40px;
+  width: 5%;
 }
 
 .hi-lo-display {
