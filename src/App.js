@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './assets/App.css';
 
-// import newData from './mockData';
+import newData from './mockData';
 import apiKey from './assets/Key';
 import Welcome from './Welcome';
 import Header from './Header';
@@ -77,7 +77,6 @@ export default class App extends Component {
 
   updateLocalStorage() {
     localStorage.setItem('location', JSON.stringify(this.state.location))
-    this.getWeather()
   }
 
   render() {
