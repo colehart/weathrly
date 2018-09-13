@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './WeatherCard.css';
+import './assets/WeatherCard.css';
 
 export default class WeatherCard extends Component {
   constructor(props) {

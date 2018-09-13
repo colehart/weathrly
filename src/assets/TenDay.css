@@ -19,6 +19,7 @@
 
 .ten-day-container {
   display: grid;
-  grid-template-columns: (repeat 10 , 1fr);
+  /*grid-template-columns: (repeat 10 , 1fr);*/
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
 }
