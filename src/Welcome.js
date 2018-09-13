@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Search from './Search'
-import './Welcome.css'
+import './assets/Welcome.css'
 
 export default function Welcome(props) {
   const { location } = props;
