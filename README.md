@@ -1,5 +1,3 @@
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/colehart/weathrly.svg?columns=all)](https://waffle.io/colehart/weathrly)
-
 # Weathrly
 ## A weather app created with Weather Underground API and React.
 
